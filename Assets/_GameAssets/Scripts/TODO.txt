@@ -1,0 +1,18 @@
+-------------- INTERFAZ --------------
+- Avatar
+- Vida actual/maxima
+- Cordura actual/maxima
+- Caracteristicas de ataque
+	- fistDamage
+	- kickDamage
+	- Dodge
+	- Speed
+- Tipos de ataque
+- Tipos de combate táctico
+- Equipo
+
+-------------- INTERFAZ --------------
+
+-------------- CLASE ATAQUE --------------
+- Definir la clase, los métodos generales
+- Definir los tipos de ataque de cada personaje heredando de la clase padre
