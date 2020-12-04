@@ -1,3 +1,10 @@
+-------------- DONE --------------
+- pruebas ataque
+- tirada aleatoria
+- calcular si es critico
+- calcular daño
+- restar puntos de vida
+
 -------------- INTERFAZ --------------
 - Avatar
 - Vida actual/maxima
