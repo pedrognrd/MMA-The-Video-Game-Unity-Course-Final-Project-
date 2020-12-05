@@ -38,6 +38,7 @@ public class ThrowingHat : CombatSkill
     // TDOO: Update Arkham threat level
     public override void Attack()
     {
+        GameObject.Find("TextCurrentEvent").GetComponent<PanelTextCurrentEventManager>().UpdateText("Throwing hat");
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // If the percentual roll is lower than impact value, the attack is a success
@@ -55,6 +56,8 @@ public class ThrowingHat : CombatSkill
             }
             // damage is subtracted from enemy hitPoints
             GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints -= damage;
+            // Update hitPoints in Enemy HUD
+            GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateHitPoints(damage);
             // Is the enemy dead?
             if (GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints < 0)
             {

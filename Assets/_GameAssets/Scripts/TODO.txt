@@ -1,4 +1,21 @@
--------------- DONE --------------
+------------- TODO --------------
+- When impact instantiate flying numbers
+
+------------- TODO --------------
+
+------------- DONE --------------
+- HUD
+	- Marcadores para vida y cordura, nombre de heroe y concepto de heroe
+		- Cargar los datos de la clase StatisticsBlueGhost
+	- Botones para las acciones de combate
+	- Botones para las tacticas de combate
+- Base HUD
+	- Name hero&enemy text
+	- Concept hero&enemy text
+	- Hitpoints&SanityPoints hero&enemy text
+	- buttons combat skills
+	- buttons tactital skills
+
 - Clase Attack
 	- Definir la clase, los métodos generales
 	- Definir los tipos de ataque de cada personaje heredando de la clase padre
@@ -8,6 +25,8 @@
 - calcular si es critico
 - calcular daño
 - restar puntos de vida
+------------- DONE --------------
+
 
 ------------ INTERFAZ ------------
 - Avatar
@@ -23,10 +42,4 @@
 - Equipo
 ------------ INTERFAZ ------------
 
-------------- TODO ---------------
-- HUD
-	- Marcadores para vida y cordura
-	- Botones para las acciones de combate
-	- Botones para las tacticas de combate
 
-------------- TODO ---------------
