@@ -25,7 +25,6 @@ public abstract class StatisticsCharacter : MonoBehaviour
     public int dodge;
     public int hitPoints;
     public int hitPointsMax;
-    public int luck;
 
     [Header("SANITY")]
     public int sanity;

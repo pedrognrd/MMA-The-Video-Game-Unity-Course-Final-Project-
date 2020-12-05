@@ -7,7 +7,7 @@ public class StatisticsDeepOne : StatisticsCharacter
     protected void Awake()
     {
         characterName = "Deep One";
-        characterConcept = "Villain";
+        characterConcept = "Server of Dagon";
 
         constitution = 10;
         dexterity = 10;
@@ -26,7 +26,6 @@ public class StatisticsDeepOne : StatisticsCharacter
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
-        luck = power * 5;
         sanityMax = power * 5;
         sanity = sanityMax;
     }

@@ -6,10 +6,11 @@ public class ThrowingHat : CombatSkill
 {
     protected void Awake()
     {
-        ammo = -1; // if -1 = infinite
+        ammo = -1; // -1 = infinite
         criticalMod = -5;
-        damage = 8; // a medida que blue ghost suba de nivel, hará mas daño
-        distance = 10; // a medida que blue ghost suba de nivel, lo lanzará más lejos
+        damageMax = 12;
+        damageMin = 8;
+        distance = 10; // When the character increase its level, distanci will be higer
         hitEffect = 0; // 0 = none, 1 = bleeding, 2 = criticalHit, 3 = move, 4 = stun
         impact = 60;
         kind = 2; // 1 = melee, 2 = distance, 3 = magic
@@ -18,6 +19,7 @@ public class ThrowingHat : CombatSkill
     // Start is called before the first frame update
     void Start()
     {
+        // If impact value is lower than throwing character's hability value
         if (impact < character.GetComponent<StatisticsCharacter>().throwing) {
             impact = character.GetComponent<StatisticsCharacter>().throwing;
         }
@@ -29,42 +31,42 @@ public class ThrowingHat : CombatSkill
         
     }
 
+    // TODO: The hat will be thrown at the selected enemy
+    // TODO: If enemy dies, take animation
+    // TODO: Update HUD
+    // TODO: Update threat level
+    // TDOO: Update Arkham threat level
     public override void Attack()
     {
-        // Se hace una tirada:
+        // A percentual roll is made
         attackRoll = Random.Range(1, 100);
-        print("impact " + impact);
-        // Se compara con la habilidad de impactar para ver si el ataque ha tenido éxito
+        // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll < impact)
         {
-            // Se calcula si ha hecho un ataque crítico
-            if (attackRoll < ((impact * 20) / 100) + criticalMod) {
-                print("hace critico");
-                // Se calcula el daño
-                print("vida del profundo " + GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints);
-                damage = Random.Range(8, 12);
-                print("damage " + damage);
-                GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints -= damage;
-                print("vida del profundo tras golpe" + GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints);
+            // If the attackRoll is a 20% of the impact value, the attack is a critical attack
+            if (attackRoll < ((impact * 20) / 100) + criticalMod)
+            {
+                // With critical attack the weapon inflicts its maximum damage
+                damage = damageMax;
             }
-            //character.GetComponent<StatisticsCharacter>().criticalHit;
+            else {
+                // With normal attack the weapon inflicts a random range of damage
+                damage = Random.Range(damageMin, damageMax);
+            }
+            // damage is subtracted from enemy hitPoints
+            GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints -= damage;
+            // Is the enemy dead?
+            if (GameObject.Find("DeepOne").GetComponent<StatisticsDeepOne>().hitPoints < 0)
+            {
+                print("Enemy is dead");
+                //Destroy(GameObject.Find("DeepOne"));
+            }
+            // Apply weapon effects if have it
+            // Substract ammo if have it
         }
         else {
-            print("Ataque fallado " + attackRoll);
+            // The attack is a failed
+            print("Attack failed " + attackRoll);
         }
-        /*
-        - Se hace una tirada usando:
-            - impact o throwing (lo que sea mayor)
-            - se calcula el crítico con criticalHit + criticalMod
-            - el enemigo esquiva si escogió esquivar
-        - Si se impacta
-            - Se causa daño
-                - Normal o crítico
-                - Se evalua si ha muerto el enemigo
-            - Se aplican efectos
-            - Se resta ammo
-
-        */
-
     }
 }

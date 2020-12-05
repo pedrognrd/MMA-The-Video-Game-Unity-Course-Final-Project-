@@ -1,11 +1,15 @@
 -------------- DONE --------------
+- Clase Attack
+	- Definir la clase, los métodos generales
+	- Definir los tipos de ataque de cada personaje heredando de la clase padre
+
 - pruebas ataque
 - tirada aleatoria
 - calcular si es critico
 - calcular daño
 - restar puntos de vida
 
--------------- INTERFAZ --------------
+------------ INTERFAZ ------------
 - Avatar
 - Vida actual/maxima
 - Cordura actual/maxima
@@ -17,9 +21,12 @@
 - Tipos de ataque
 - Tipos de combate táctico
 - Equipo
+------------ INTERFAZ ------------
 
--------------- INTERFAZ --------------
+------------- TODO ---------------
+- HUD
+	- Marcadores para vida y cordura
+	- Botones para las acciones de combate
+	- Botones para las tacticas de combate
 
--------------- CLASE ATAQUE --------------
-- Definir la clase, los métodos generales
-- Definir los tipos de ataque de cada personaje heredando de la clase padre
+------------- TODO ---------------
