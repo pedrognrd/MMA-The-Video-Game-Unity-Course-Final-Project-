@@ -1,14 +1,44 @@
-------------- TODO --------------
-- When impact instantiate flying numbers
+-------- STOPPERS&IDEAS ---------
+- NAMING OF BLUE GHOST ITEMS BASED ON 24 SHADES OF BLUE COLOR PALETTE:
+	- https://graf1x.com/shades-of-blue-color-palette/
+- Do we use Score?
+-------- STOPPERS&IDEAS ---------
 
+------------- TODO --------------
+- Extract InflictDamage(), InflictDamage(), LoadingGameObjects() from all the combatskill child classes.
+- Enemy Attacks
+	- Random attack between melee and range
+- Attack after selecting enemy
+	- Touch enemy and show selected marker
+	- Allow attack
+	- Attack
+	- Hide selected marker
+- Control ammo chargers
+- Display Weapon level statistics
+- Control ammo ammount, when 0 it will need an action turn to reload
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Melee attacks
+	- Damagebonus of character is calculated and added to min&max damage
+- Displaying attack text events
+- Displaying ammo text events
+- Create methods for all the work done in weapon attack
+- When impact:
+	- Instantiate flying numbers
+		- How to instantiate in a propoer position?
+	- Show/Hide Current Event Text
+	- If dies:
+		- Show/Hide Current Event Text
+		- Destroy gameObject
+- When failed:
+	- Show/Hide Current Event Text
+
 - HUD
-	- Marcadores para vida y cordura, nombre de heroe y concepto de heroe
-		- Cargar los datos de la clase StatisticsBlueGhost
-	- Botones para las acciones de combate
-	- Botones para las tacticas de combate
+	- Name and Concept Character. HitPoints and SanityPoints
+		- Data loaded from character class
+	- Buttons for combat skills
+	- Buttons for combat tactitals
 - Base HUD
 	- Name hero&enemy text
 	- Concept hero&enemy text
@@ -26,7 +56,6 @@
 - calcular daño
 - restar puntos de vida
 ------------- DONE --------------
-
 
 ------------ INTERFAZ ------------
 - Avatar

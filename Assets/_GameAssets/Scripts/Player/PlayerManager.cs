@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            GetComponent<ThrowingHat>().Attack();
+            //GetComponent<BlueGhostWeaponRange1>().Attack();
         }
     }
 }

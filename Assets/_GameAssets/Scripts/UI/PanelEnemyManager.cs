@@ -37,7 +37,8 @@ public class PanelEnemyManager : MonoBehaviour
         textSanityPoints.text = sanity + "/" + sanityMax;
     }
 
-    public void UpdateHitPoints(int damage) 
+    // Update enemy hit points
+    public void UpdateHitPoints(int damage)
     {
         hitPoints -= damage;
         textHitPoints.text = hitPoints + "/" + hitPointsMax;

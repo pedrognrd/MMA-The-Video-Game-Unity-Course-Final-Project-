@@ -8,17 +8,17 @@ public abstract class StatisticsCharacter : MonoBehaviour
     [Header("PROFILE")]
     public string characterName;
     public string characterConcept;
-    [SerializeField]
-    public GameObject characterAvatar;
+    //[SerializeField]
+    //public GameObject characterAvatar;
 
     [Header("CHARACTERISTICS")]
     public int constitution;
     public int dexterity;
     public int intelligence;
-    public int power; 
+    public int power;
     public int size;
     public int strength;
-    
+
     [Header("DERIVED FROM CHARACTERISTICS")]
     [Range(-6, 60)]
     public int damageBonus;
@@ -32,7 +32,7 @@ public abstract class StatisticsCharacter : MonoBehaviour
 
     [Header("HABILITIES")]
     public int fist;
-    public int kick; 
+    public int kick;
     public int medicine;
     public int throwing;
     public int shot;

@@ -10,9 +10,9 @@ public class PanelHeroManager : MonoBehaviour
     private Text textConcept;
     private Text textHitPoints;
     private Text textSanityPoints;
-    private int hitPoints; 
+    private int hitPoints;
     private int hitPointsMax;
-    private int sanity; 
+    private int sanity;
     private int sanityMax;
 
 
@@ -22,7 +22,7 @@ public class PanelHeroManager : MonoBehaviour
         LoadingStatistics();
     }
 
-    public void LoadingStatistics() 
+    public void LoadingStatistics()
     {
         textName = GameObject.Find("HeroName").GetComponent<Text>();
         textName.text = GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().characterName;
@@ -37,5 +37,11 @@ public class PanelHeroManager : MonoBehaviour
         textSanityPoints = GameObject.Find("HeroSanityPoints").GetComponent<Text>();
         textHitPoints.text = hitPoints + "/" + hitPointsMax;
         textSanityPoints.text = sanity + "/" + sanityMax;
+    }
+
+    public void UpdateHitPoints(int damage)
+    {
+        hitPoints -= damage;
+        textHitPoints.text = hitPoints + "/" + hitPointsMax;
     }
 }

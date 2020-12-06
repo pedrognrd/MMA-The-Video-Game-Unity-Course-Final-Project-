@@ -13,7 +13,8 @@ public class FlyingPoints : MonoBehaviour
     public SpriteRenderer spriteRenderer0;
     public SpriteRenderer spriteRenderer1;
     private int points = 12;
-    public void SetPoints(int _points)
+
+     public void SetPoints(int _points)
     {
         // Take one or two sprites from Digits/hud folder according with the score that has to be shown
         this.points = _points;
