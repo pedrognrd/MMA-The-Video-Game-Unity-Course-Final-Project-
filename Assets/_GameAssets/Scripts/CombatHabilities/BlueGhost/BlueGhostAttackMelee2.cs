@@ -69,7 +69,7 @@ public class BlueGhostAttackMelee2 : CombatSkills
             // Is the enemy dead?
             if (enemyCharacter.GetComponent<StatisticsDeepOne>().hitPoints <= 0)
             {
-                textEvent1.GetComponent<PanelTextEventManager>().UpdateText(enemyCharacter.GetComponent<StatisticsDeepOne>().characterName + "is dead");
+                textEvent1.GetComponent<PanelTextEventManager>().UpdateText(enemyCharacter.GetComponent<StatisticsDeepOne>().characterName + " is dead");
                 Destroy(enemyCharacter);
             }
             // Apply weapon effects if have it
@@ -89,6 +89,8 @@ public class BlueGhostAttackMelee2 : CombatSkills
         {
             // With critical attack the weapon inflicts its maximum damage
             damage = damageMax;
+            // it causes stun effect
+            hitEffect = 3;
         }
         else
         {

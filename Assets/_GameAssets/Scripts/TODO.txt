@@ -5,20 +5,29 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- Extract InflictDamage(), InflictDamage(), LoadingGameObjects() from all the combatskill child classes.
-- Enemy Attacks
-	- Random attack between melee and range
+- Update canvas Enemy Panel when enemy is selected
+	- Canvas Enemy Panel display enemy data
+	- Display enemy when selected
+- Update BlueGhost combat skill weapons as in BlueGhostWeaponRange1
+
+- Attack to selected enemy
 - Attack after selecting enemy
 	- Touch enemy and show selected marker
 	- Allow attack
 	- Attack
 	- Hide selected marker
+	
+
+- Enemy Attacks
+	- Random attack between melee and range
+
 - Control ammo chargers
 - Display Weapon level statistics
 - Control ammo ammount, when 0 it will need an action turn to reload
 ------------- TODO --------------
 
 ------------- DONE --------------
+- DamageReceived() in StatisticsCharacter to control damage and dying
 - Melee attacks
 	- Damagebonus of character is calculated and added to min&max damage
 - Displaying attack text events

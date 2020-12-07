@@ -33,7 +33,7 @@ public class BlueGhostWeaponRange1 : CombatSkills
     {
         // Capturing GameObjects
         textEvent1 = GameObject.Find("TextEvent1");
-        enemyCharacter = GameObject.Find("DeepOne");
+        enemyCharacter = GameObject.Find("Dagon");
         panelEnemy = GameObject.Find("PanelEnemy");
     }
 
@@ -61,12 +61,6 @@ public class BlueGhostWeaponRange1 : CombatSkills
         if (attackRoll < impact)
         {
             InflictDamage();
-            // Is the enemy dead?
-            if (enemyCharacter.GetComponent<StatisticsDeepOne>().hitPoints <= 0)
-            {
-                textEvent1.GetComponent<PanelTextEventManager>().UpdateText(enemyCharacter.GetComponent<StatisticsDeepOne>().characterName + "is dead");
-                Destroy(enemyCharacter);
-            }
             // Apply weapon effects if have it
             // Substract ammo if have it
         }
@@ -90,11 +84,10 @@ public class BlueGhostWeaponRange1 : CombatSkills
             // With normal attack the weapon inflicts a random range of damage
             damage = Random.Range(damageMin, damageMax);
         }
-        // Instantiate flying points
-        enemyCharacter.GetComponent<FlyingPointsManager>().InstantiateFlyingPoints(damage);
-        // damage is subtracted from enemy hitPoints
-        enemyCharacter.GetComponent<StatisticsDeepOne>().hitPoints -= damage;
         // Update hitPoints in Enemy HUD
         panelEnemy.GetComponent<PanelEnemyManager>().UpdateHitPoints(damage);
+        // damage is subtracted from enemy hitPoints
+        enemyCharacter.GetComponent<StatisticsCharacter>().DamageReceived(damage);
+        //enemyCharacter.GetComponent<StatisticsDeepOne>().hitPoints -= damage;
     }
 }

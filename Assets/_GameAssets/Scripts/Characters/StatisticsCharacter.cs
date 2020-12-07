@@ -8,8 +8,8 @@ public abstract class StatisticsCharacter : MonoBehaviour
     [Header("PROFILE")]
     public string characterName;
     public string characterConcept;
-    //[SerializeField]
-    //public GameObject characterAvatar;
+    [SerializeField]
+    public GameObject characterAvatar;
 
     [Header("CHARACTERISTICS")]
     public int constitution;
@@ -52,4 +52,20 @@ public abstract class StatisticsCharacter : MonoBehaviour
     public bool criticalHit = false; // causa máximo daño si hace crítico, resultado < 10% tirada
     public bool move = false; // mover, si el enemigo sale de la distancia de ataque, tiene que mover
     public bool stun = false;
+
+    public GameObject textEvent;
+
+    public void DamageReceived(int damage)
+    {
+        hitPoints -= damage;
+        // Instantiate flying points
+        GetComponent<FlyingPointsManager>().InstantiateFlyingPoints(damage);
+        // Is the enemy dead?
+        if (hitPoints <= 0)
+        {
+            textEvent = GameObject.Find("TextEvent1");
+            textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
+            Destroy(gameObject);
+        }
+    }
 }

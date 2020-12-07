@@ -16,18 +16,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SelectCharacter();
-        }
-    }
-
-    public void SelectCharacter()
-    {
-        //Debug.Log("Mouse is down");
-    }
 }
