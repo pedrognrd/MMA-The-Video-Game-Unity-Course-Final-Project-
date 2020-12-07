@@ -10,13 +10,10 @@ public class BlueGhostWeaponRange1 : CombatSkills
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
 
-    GameObject textEvent1;
-    GameObject enemyCharacter;
-    GameObject panelEnemy;
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         LoadingStatistics();
-        LoadingGameObjects();
     }
 
     // Start is called before the first frame update
@@ -27,14 +24,6 @@ public class BlueGhostWeaponRange1 : CombatSkills
         {
             impact = character.GetComponent<StatisticsCharacter>().throwing;
         }
-    }
-
-    private void LoadingGameObjects()
-    {
-        // Capturing GameObjects
-        textEvent1 = GameObject.Find("TextEvent1");
-        enemyCharacter = GameObject.Find("Dagon");
-        panelEnemy = GameObject.Find("PanelEnemy");
     }
 
     private void LoadingStatistics()
@@ -88,6 +77,11 @@ public class BlueGhostWeaponRange1 : CombatSkills
         panelEnemy.GetComponent<PanelEnemyManager>().UpdateHitPoints(damage);
         // damage is subtracted from enemy hitPoints
         enemyCharacter.GetComponent<StatisticsCharacter>().DamageReceived(damage);
-        //enemyCharacter.GetComponent<StatisticsDeepOne>().hitPoints -= damage;
+    }
+
+    public void UpdatingEnemySelected(GameObject hitName)
+    {
+        // Capturing Enemy to Attack after being selecting
+        enemyCharacter = hitName;
     }
 }

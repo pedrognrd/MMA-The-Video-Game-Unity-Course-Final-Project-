@@ -5,12 +5,16 @@ using UnityEngine;
 public class EnemySelectedManager : MonoBehaviour
 {
     GameObject panelEnemyManager;
-    public void EnemySelected(string hitName) 
+    GameObject blueGhost;
+
+    public void EnemySelected(GameObject enemySelected)
     {
-        print("enemySelected " + hitName);
-        // Show enemySelected data in PanelEnemy
-        panelEnemyManager = GameObject.Find("PanelEnemyManager");
-        //panelEnemyManager.GetComponent<PanelEnemyManager>().LoadingFromEnemySelectedManager(hitName);
+        // Sending enemySelected data to BlueGhost
+        blueGhost = GameObject.Find("BlueGhost");
+        blueGhost.GetComponent<BlueGhostWeaponRange1>().UpdatingEnemySelected(enemySelected);
+        // Sending enemySelected data to PanelEnemy
+        panelEnemyManager = GameObject.Find("PanelEnemy");
+        panelEnemyManager.GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
 
     }
 }

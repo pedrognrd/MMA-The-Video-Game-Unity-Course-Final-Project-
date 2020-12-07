@@ -20,9 +20,22 @@ public class PanelEnemyManager : MonoBehaviour
         LoadingStatistics();
     }
 
-    public void LoadingFromEnemySelectedManager(string enemyName) 
+    public void UpdateEnemyPanel(GameObject hitName)
     {
-        print("enemyName ");
+        // Loading enemySelected data received into PanelEnemy
+        textName = GameObject.Find("EnemyName").GetComponent<Text>();
+        textName.text = hitName.GetComponent<StatisticsCharacter>().characterName;
+        textConcept = GameObject.Find("EnemyConcept").GetComponent<Text>();
+        textConcept.text = hitName.GetComponent<StatisticsCharacter>().characterConcept;
+
+        hitPoints = hitName.GetComponent<StatisticsCharacter>().hitPoints;
+        hitPointsMax = hitName.GetComponent<StatisticsCharacter>().hitPointsMax;
+        sanity = hitName.GetComponent<StatisticsCharacter>().sanity;
+        sanityMax = hitName.GetComponent<StatisticsCharacter>().sanityMax;
+        textHitPoints = GameObject.Find("EnemyHitPoints").GetComponent<Text>();
+        textSanityPoints = GameObject.Find("EnemySanityPoints").GetComponent<Text>();
+        textHitPoints.text = hitPoints + "/" + hitPointsMax;
+        textSanityPoints.text = sanity + "/" + sanityMax;
     }
 
     public void LoadingStatistics()

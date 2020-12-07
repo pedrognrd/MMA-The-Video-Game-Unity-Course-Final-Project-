@@ -1568,7 +1568,6 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1649,7 +1648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.835035, y: -9.003344, z: 69.700935}
+  m_LocalPosition: {x: 7.5486135, y: -9.003344, z: 69.700935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1461265253}
@@ -1720,46 +1719,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7f805a360808c45a4c5478cf9da327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: 
-  characterConcept: 
-  constitution: 0
-  dexterity: 0
-  intelligence: 0
-  power: 0
-  size: 0
-  strength: 0
-  damageBonus: 0
-  dodge: 0
-  hitPoints: 0
-  hitPointsMax: 0
-  sanity: 0
-  sanityMax: 0
-  fist: 0
-  kick: 0
-  medicine: 0
-  throwing: 0
-  shot: 0
-  fistDamage: 0
-  kickDamage: 0
-  handGunDamage: 0
-  hatDamage: 0
-  bleeding: 0
-  criticalHit: 0
-  move: 0
-  stun: 0
-  enemySelected: {fileID: 0}
 --- !u!1 &558055393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,9 +1893,8 @@ RectTransform:
   - {fileID: 721879}
   - {fileID: 2134297915}
   - {fileID: 1381560038}
-  - {fileID: 1816571267}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4533,7 +4491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364859024
 GameObject:
@@ -5654,7 +5612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495344870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.835035, y: -9.003344, z: 69.700935}
+  m_LocalPosition: {x: 7.5486135, y: -9.003344, z: 69.700935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1934983269}
@@ -6739,12 +6697,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816571263}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -397.3616, y: -243.51791, z: 0}
-  m_LocalScale: {x: 0.65146583, y: 0.65146583, z: 0.65146583}
+  m_LocalPosition: {x: 4.0499268, y: -4.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1638216463}
-  m_Father: {fileID: 572808054}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1816571268
 MonoBehaviour:
@@ -7460,39 +7418,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035770747}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec7f805a360808c45a4c5478cf9da327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterConcept: 
-  constitution: 0
-  dexterity: 0
-  intelligence: 0
-  power: 0
-  size: 0
-  strength: 0
-  damageBonus: 0
-  dodge: 0
-  hitPoints: 0
-  hitPointsMax: 0
-  sanity: 0
-  sanityMax: 0
-  fist: 0
-  kick: 0
-  medicine: 0
-  throwing: 0
-  shot: 0
-  fistDamage: 0
-  kickDamage: 0
-  handGunDamage: 0
-  hatDamage: 0
-  bleeding: 0
-  criticalHit: 0
-  move: 0
-  stun: 0
-  enemySelected: {fileID: 0}
 --- !u!1 &2037349392
 GameObject:
   m_ObjectHideFlags: 0

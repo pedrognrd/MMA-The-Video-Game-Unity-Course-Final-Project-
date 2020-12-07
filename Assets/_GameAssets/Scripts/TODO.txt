@@ -5,10 +5,6 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- Character selected when mousedown
-- Update canvas Enemy Panel when enemy is selected
-	- Canvas Enemy Panel display enemy data
-	- Display enemy when selected
 - Update BlueGhost combat skill weapons as in BlueGhostWeaponRange1
 
 - Attack to selected enemy
@@ -28,6 +24,12 @@
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Character selected when mousedown
+	- Canvas Enemy Panel display enemy data
+	- Update enemy data in its Statistics when selected
+	- Enemy selected receives damage nice!
+
+- Blue Ghost Attacks to current enemy selected
 - DamageReceived() in StatisticsCharacter to control damage and dying
 - Melee attacks
 	- Damagebonus of character is calculated and added to min&max damage

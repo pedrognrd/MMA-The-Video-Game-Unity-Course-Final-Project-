@@ -13,7 +13,7 @@ public class StatisticsDagon : StatisticsCharacter
         dexterity = 10;
         intelligence = 13;
         power = 10;
-        size = 16;
+        size = 30;
         strength = 14;
 
         fist = 25;

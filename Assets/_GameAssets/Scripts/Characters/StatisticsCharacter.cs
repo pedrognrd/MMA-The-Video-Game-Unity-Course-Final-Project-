@@ -80,7 +80,6 @@ public abstract class StatisticsCharacter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse is pressed down");
             Camera cam = Camera.main;
 
             //Raycast depends on camera projection mode
@@ -103,11 +102,12 @@ public abstract class StatisticsCharacter : MonoBehaviour
             //Check if we hit anything
             if (hit)
             {
-                print("We hit " + hit.collider.name);
                 if (hit.collider.CompareTag("Enemy")) 
                 {
                     string hitName = hit.collider.name;
-                    gameManager.GetComponent<EnemySelectedManager>().EnemySelected(hitName);
+                    GameObject controlledUnit = hit.transform.gameObject;
+                    //gameManager.GetComponent<EnemySelectedManager>().EnemySelected(hitName);
+                    gameManager.GetComponent<EnemySelectedManager>().EnemySelected(controlledUnit);
                 }
             }
         }

@@ -18,5 +18,16 @@ public abstract class CombatSkills : MonoBehaviour
     [SerializeField]
     protected GameObject character;
 
+    public GameObject textEvent1;
+    public GameObject enemyCharacter;
+    public GameObject panelEnemy;
+
+    protected virtual void Awake()
+    {
+        // Capturing Interactive GameObjects
+        textEvent1 = GameObject.Find("TextEvent1");
+        panelEnemy = GameObject.Find("PanelEnemy");
+    }
+
     public abstract void Attack();
 }
