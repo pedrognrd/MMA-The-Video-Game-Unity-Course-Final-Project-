@@ -5,16 +5,6 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- Update BlueGhost combat skill weapons as in BlueGhostWeaponRange1
-
-- Attack to selected enemy
-- Attack after selecting enemy
-	- Touch enemy and show selected marker
-	- Allow attack
-	- Attack
-	- Hide selected marker
-	
-
 - Enemy Attacks
 	- Random attack between melee and range
 
@@ -24,6 +14,14 @@
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Update BlueGhost combat skill weapons as in BlueGhostWeaponRange1
+	- In EnemySelectedManager, the method EnemySelected is sending data to BlueGhostWeaponRange1
+	- Send data to all weapons
+
+- Attack to selected enemy
+- Attack after selecting enemy
+	- Touch enemy and show selected marker
+	- Attack
 - Character selected when mousedown
 	- Canvas Enemy Panel display enemy data
 	- Update enemy data in its Statistics when selected
@@ -82,5 +80,3 @@
 - Tipos de combate táctico
 - Equipo
 ------------ INTERFAZ ------------
-
-

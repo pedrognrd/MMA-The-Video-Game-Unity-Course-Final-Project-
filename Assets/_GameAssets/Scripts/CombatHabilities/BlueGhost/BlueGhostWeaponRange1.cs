@@ -47,7 +47,7 @@ public class BlueGhostWeaponRange1 : CombatSkills
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // If the percentual roll is lower than impact value, the attack is a success
-        if (attackRoll < impact)
+        if (attackRoll <= impact)
         {
             InflictDamage();
             // Apply weapon effects if have it
