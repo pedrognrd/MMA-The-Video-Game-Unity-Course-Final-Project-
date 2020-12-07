@@ -30,12 +30,8 @@ public class PanelEnemyManager : MonoBehaviour
 
         hitPoints = hitName.GetComponent<StatisticsCharacter>().hitPoints;
         hitPointsMax = hitName.GetComponent<StatisticsCharacter>().hitPointsMax;
-        sanity = hitName.GetComponent<StatisticsCharacter>().sanity;
-        sanityMax = hitName.GetComponent<StatisticsCharacter>().sanityMax;
         textHitPoints = GameObject.Find("EnemyHitPoints").GetComponent<Text>();
-        textSanityPoints = GameObject.Find("EnemySanityPoints").GetComponent<Text>();
         textHitPoints.text = hitPoints + "/" + hitPointsMax;
-        textSanityPoints.text = sanity + "/" + sanityMax;
     }
 
     public void LoadingStatistics()
@@ -45,14 +41,10 @@ public class PanelEnemyManager : MonoBehaviour
         textConcept = GameObject.Find("EnemyConcept").GetComponent<Text>();
         textConcept.text = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().characterConcept;
 
-        hitPoints = GameObject.Find("DeepOne").GetComponent<StatisticsCharacter>().hitPoints;
-        hitPointsMax = GameObject.Find("DeepOne").GetComponent<StatisticsCharacter>().hitPointsMax;
-        sanity = GameObject.Find("DeepOne").GetComponent<StatisticsCharacter>().sanity;
-        sanityMax = GameObject.Find("DeepOne").GetComponent<StatisticsCharacter>().sanityMax;
+        hitPoints = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().hitPoints;
+        hitPointsMax = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().hitPointsMax;
         textHitPoints = GameObject.Find("EnemyHitPoints").GetComponent<Text>();
-        textSanityPoints = GameObject.Find("EnemySanityPoints").GetComponent<Text>();
         textHitPoints.text = hitPoints + "/" + hitPointsMax;
-        textSanityPoints.text = sanity + "/" + sanityMax;
     }
 
     // Update enemy hit points

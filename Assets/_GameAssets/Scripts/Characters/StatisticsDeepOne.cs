@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StatisticsDeepOne : StatisticsCharacter
 {
+    [Header("SANITY LOSS")]
+    [Range(0, 6)]
+    public int sanityLoss;
     protected void Awake()
     {
         characterName = "Deep One";
@@ -17,16 +20,11 @@ public class StatisticsDeepOne : StatisticsCharacter
         strength = 14;
 
         fist = 25;
-        kick = 00;
-        medicine = 70;
         throwing = 25;
-        shot = 20;
 
         damageBonus = strength + size;
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
-        sanityMax = power * 5;
-        sanity = sanityMax;
     }
 }

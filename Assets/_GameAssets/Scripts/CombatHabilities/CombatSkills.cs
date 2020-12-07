@@ -5,8 +5,10 @@ using UnityEngine;
 public abstract class CombatSkills : MonoBehaviour
 {
     protected int ammo; // -1 = infinite
+    protected int ammoMax; // -1 = infinite
     protected int attackRoll;
     protected int chargers; // -1 = infinite
+    protected int chargersMax; // -1 = infinite
     protected int criticalMod;
     protected int damage; // When the character increase its level, damage will be higer
     protected int damageMax;

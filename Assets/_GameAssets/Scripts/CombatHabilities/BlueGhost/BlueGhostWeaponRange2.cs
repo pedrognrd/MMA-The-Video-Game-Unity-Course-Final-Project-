@@ -10,9 +10,14 @@ public class BlueGhostWeaponRange2 : CombatSkills
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
 
+    public GameObject textEvent2;
+    private bool ammoManager;
+
     protected override void Awake()
     {
         base.Awake();
+        textEvent2 = GameObject.Find("TextEvent2");
+        ammoManager = false;
         LoadingStatistics();
     }
 
@@ -26,11 +31,17 @@ public class BlueGhostWeaponRange2 : CombatSkills
         }
     }
 
+    private void Update()
+    {
+    }
+
     private void LoadingStatistics()
     {
         // Defining weapon statistics
-        ammo = 8; // -1 = infinite
-        chargers = 10; // -1 = infinite
+        ammoMax = 8; // -1 = infinite
+        ammo = ammoMax; // -1 = infinite
+        chargersMax = 10; // -1 = infinite
+        chargers = chargersMax; // -1 = infinite
         criticalMod = -4;
         damageMax = 16;
         damageMin = 10;
@@ -42,22 +53,63 @@ public class BlueGhostWeaponRange2 : CombatSkills
 
     public override void Attack()
     {
-        // Using weapon, a message is shown in screen
-        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Shooting Blue Colt");
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
+        // Substract ammo
+        ammo--;
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
-            InflictDamage();
-            // Apply weapon effects if have it
-            // Substract ammo if have it
+            if (ammo >= 0)
+            {
+                // Using weapon, a message is shown in screen
+                textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Shooting Blue Colt");
+                textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left" + ammo);
+                InflictDamage();
+                // TODO: Apply weapon effects if have it
+            }
+            else
+            {
+                if (chargers >= 0)
+                {
+                    ammo = ammoMax;
+                    textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Recharging Blue Colt");
+                    textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left: " + ammo + "Chargers: " + chargers);
+                    chargers--;
+                }
+                else
+                {
+                    textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Colt out of Ammo!");
+                }
+            }
         }
-        else
+        if (attackRoll > impact)
         {
-            // The attack is a failed, a message is shown in screen
-            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            if (ammo >= 0)
+            {
+                // Using weapon, a message is shown in screen
+                textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Colt Failed!");
+                textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left:" + ammo);
+                // TODO: Apply weapon effects if have it
+            }
+            else
+            {
+                if (chargers >= 0)
+                {
+                    ammo = ammoMax;
+                    textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Recharging Blue Colt");
+                    textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left: " + ammo + "Chargers: " + chargers);
+                    chargers--;
+                }
+                else {
+                    textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Colt out of Ammo!");
+                }
+            }
         }
+    }
+
+    private void AmmoManager() 
+    {
     }
 
     private void InflictDamage()

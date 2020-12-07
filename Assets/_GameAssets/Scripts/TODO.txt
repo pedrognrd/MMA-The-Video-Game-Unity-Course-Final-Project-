@@ -5,15 +5,28 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
+- Extract control chargers&ammount to a method
+- Enemy combat skills
+	- Deep One
+	- Dagon
+- Sanity Loss when enemies appear
+- when enemy dies, update enemy panel
+- Dagon summon deep ones
 - Enemy Attacks
 	- Random attack between melee and range
 
 - Control ammo chargers
 - Display Weapon level statistics
-- Control ammo ammount, when 0 it will need an action turn to reload
+
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Control chargers ammount, when 0 there will no more recharges
+- Control ammo ammount, when 0 it will need an action turn to recharge
+	- Create control of recharging Blue Colt
+
+- Control ammo ammount, when 0 it will need an action turn to reload
+	- Ammount count 
 - Update BlueGhost combat skill weapons as in BlueGhostWeaponRange1
 	- In EnemySelectedManager, the method EnemySelected is sending data to BlueGhostWeaponRange1
 	- Send data to all weapons
