@@ -1760,8 +1760,6 @@ MonoBehaviour:
   move: 0
   stun: 0
   enemySelected: {fileID: 0}
-  enemies: []
-  enemy: {fileID: 0}
 --- !u!1 &558055393
 GameObject:
   m_ObjectHideFlags: 0
@@ -7495,8 +7493,6 @@ MonoBehaviour:
   move: 0
   stun: 0
   enemySelected: {fileID: 0}
-  enemies: []
-  enemy: {fileID: 0}
 --- !u!1 &2037349392
 GameObject:
   m_ObjectHideFlags: 0

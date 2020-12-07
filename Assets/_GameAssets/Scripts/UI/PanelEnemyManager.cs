@@ -20,6 +20,11 @@ public class PanelEnemyManager : MonoBehaviour
         LoadingStatistics();
     }
 
+    public void LoadingFromEnemySelectedManager(string enemyName) 
+    {
+        print("enemyName ");
+    }
+
     public void LoadingStatistics()
     {
         textName = GameObject.Find("EnemyName").GetComponent<Text>();

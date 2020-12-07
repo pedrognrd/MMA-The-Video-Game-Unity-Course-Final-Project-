@@ -54,7 +54,14 @@ public abstract class StatisticsCharacter : MonoBehaviour
     public bool stun = false;
 
     public GameObject textEvent;
+    GameObject gameManager;
 
+    private void Update()
+    {
+        gameManager = GameObject.Find("GameManager");
+        //Update EnemySelectedManager
+        characterClicked();
+    }
     public void DamageReceived(int damage)
     {
         hitPoints -= damage;
@@ -66,6 +73,43 @@ public abstract class StatisticsCharacter : MonoBehaviour
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
             Destroy(gameObject);
+        }
+    }
+
+    public void characterClicked()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse is pressed down");
+            Camera cam = Camera.main;
+
+            //Raycast depends on camera projection mode
+            Vector2 origin = Vector2.zero;
+            Vector2 dir = Vector2.zero;
+
+            if (cam.orthographic)
+            {
+                origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+            else
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                origin = ray.origin;
+                dir = ray.direction;
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(origin, dir);
+
+            //Check if we hit anything
+            if (hit)
+            {
+                print("We hit " + hit.collider.name);
+                if (hit.collider.CompareTag("Enemy")) 
+                {
+                    string hitName = hit.collider.name;
+                    gameManager.GetComponent<EnemySelectedManager>().EnemySelected(hitName);
+                }
+            }
         }
     }
 }

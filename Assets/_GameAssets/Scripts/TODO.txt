@@ -5,6 +5,7 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
+- Character selected when mousedown
 - Update canvas Enemy Panel when enemy is selected
 	- Canvas Enemy Panel display enemy data
 	- Display enemy when selected
