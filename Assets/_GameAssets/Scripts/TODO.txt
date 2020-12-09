@@ -5,21 +5,28 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
+- Camera following character
+	- Where is Background?
+- Build final city scenary
+	- Locate the different spawner points all along the city
+		- Deep One spawner
+		- Dagon spawner
+		- Player Items spawner
+
+
 - If Critic, display proper textEvent2
+- Create Random Enemy Attack Manager
+
 - Character Manager
 	- DeepOne Manager
-		- canThrow controls if range1 can be selecte when generating the randomly attack.
-- Enemy Attack
-	- Deep One
-		- Correct damage inflicted with melee1
-		- Range Attack can only be selected once (there is only one Sleeping Star spear)
+		- canThrow controls if range1 can be selected when generating the randomly attack.
+		
 - Enemy combat skills
-	- Deep One
-		- Claw
-		- Throwing stick
 	- Dagon
-		- Claw
 		- Summon Deep Ones
+			- Need to move the rest of DeepOnes in scene
+				- It can be solved controlling the timing of summoning spells
+
 - Sanity Loss when enemies appear
 - when enemy dies, update enemy panel
 - Dagon summon deep ones
@@ -32,6 +39,20 @@
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Enemy combat skills
+	- Dagon
+		- Claw
+		- Summon Deep Ones
+			- Summons deep ones
+			- Need to control the area where they appear
+			- Need to move the rest of DeepOnes in scene
+	- Deep One
+		- Claw
+		- Throwing stick
+- Enemy Attack
+	- Deep One
+		- Correct damage inflicted with melee1
+		- Range Attack can only be selected once (there is only one Sleeping Star spear)
 - Control chargers ammount, when 0 there will no more recharges
 - Control ammo ammount, when 0 it will need an action turn to recharge
 	- Create control of recharging Blue Colt

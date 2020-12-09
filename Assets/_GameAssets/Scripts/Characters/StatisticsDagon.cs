@@ -22,9 +22,21 @@ public class StatisticsDagon : StatisticsCharacter
         fist = 80;
         shoot = 40; // uses shot for summoning skills
 
-        damageBonus = strength + size;
+        damageBonus = (strength + size) / 4;
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            GetComponent<DagonAttackMelee1>().Attack();
+        }
+       if (Input.GetKeyDown(KeyCode.M))
+        {
+            GetComponent<DagonWeaponRange1>().Attack();
+        }
     }
 }

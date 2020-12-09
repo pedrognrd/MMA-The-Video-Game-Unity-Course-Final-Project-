@@ -9,14 +9,9 @@ public class EnemyManager : MonoBehaviour
     // It controls if random attack can be the shoot/summon attack
     public bool canShoot;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         canThrow = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        canShoot = true;
     }
 }

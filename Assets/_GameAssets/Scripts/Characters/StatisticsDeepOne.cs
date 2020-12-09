@@ -28,7 +28,7 @@ public class StatisticsDeepOne : StatisticsCharacter
         hitPoints = hitPointsMax;
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -38,5 +38,5 @@ public class StatisticsDeepOne : StatisticsCharacter
         {
             GetComponent<DeepOneWeaponRange1>().Attack();
         }
-    }
+    }*/
 }
