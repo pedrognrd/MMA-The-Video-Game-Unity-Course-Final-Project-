@@ -23,12 +23,14 @@ public abstract class CombatSkills : MonoBehaviour
     public GameObject textEvent1;
     public GameObject enemyCharacter;
     public GameObject panelEnemy;
+    public GameObject panelHero;
 
     protected virtual void Awake()
     {
         // Capturing Interactive GameObjects
         textEvent1 = GameObject.Find("TextEvent1");
         panelEnemy = GameObject.Find("PanelEnemy");
+        panelHero = GameObject.Find("PanelHero");
     }
 
     public abstract void Attack();

@@ -5,17 +5,28 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- Extract control chargers&ammount to a method
+- If Critic, display proper textEvent2
+- Character Manager
+	- DeepOne Manager
+		- canThrow controls if range1 can be selecte when generating the randomly attack.
+- Enemy Attack
+	- Deep One
+		- Correct damage inflicted with melee1
+		- Range Attack can only be selected once (there is only one Sleeping Star spear)
 - Enemy combat skills
 	- Deep One
+		- Claw
+		- Throwing stick
 	- Dagon
+		- Claw
+		- Summon Deep Ones
 - Sanity Loss when enemies appear
 - when enemy dies, update enemy panel
 - Dagon summon deep ones
 - Enemy Attacks
 	- Random attack between melee and range
 
-- Control ammo chargers
+- Extract control chargers&ammount to a method
 - Display Weapon level statistics
 
 ------------- TODO --------------

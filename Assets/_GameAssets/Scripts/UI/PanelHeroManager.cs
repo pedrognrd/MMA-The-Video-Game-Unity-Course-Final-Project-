@@ -15,11 +15,24 @@ public class PanelHeroManager : MonoBehaviour
     private int sanity;
     private int sanityMax;
 
-
     private void Start()
     {
         // Capture Hero statistics
         LoadingStatistics();
+    }
+
+    public void UpdateEnemyPanel(GameObject hitName)
+    {
+        // Loading enemySelected data received into PanelEnemy
+        textName = GameObject.Find("HeroName").GetComponent<Text>();
+        textName.text = hitName.GetComponent<StatisticsBlueGhost>().characterName;
+        textConcept = GameObject.Find("HeroConcept").GetComponent<Text>();
+        textConcept.text = hitName.GetComponent<StatisticsBlueGhost>().characterConcept;
+
+        hitPoints = hitName.GetComponent<StatisticsBlueGhost>().hitPoints;
+        hitPointsMax = hitName.GetComponent<StatisticsBlueGhost>().hitPointsMax;
+        textHitPoints = GameObject.Find("HeroHitPoints").GetComponent<Text>();
+        textHitPoints.text = hitPoints + "/" + hitPointsMax;
     }
 
     public void LoadingStatistics()

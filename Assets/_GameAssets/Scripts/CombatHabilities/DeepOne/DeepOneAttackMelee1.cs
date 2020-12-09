@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueGhostAttackMelee2 : CombatSkills
+public class DeepOneAttackMelee1 : CombatSkills
 {
 
     // TODO: Attack Animation
@@ -17,15 +17,16 @@ public class BlueGhostAttackMelee2 : CombatSkills
     {
         base.Awake();
         LoadingStatistics();
+        enemyCharacter = GameObject.Find("BlueGhost");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // If impact value is lower than kick character's hability value
-        if (impact < character.GetComponent<StatisticsCharacter>().kick)
+        // If impact value is lower than fist character's hability value
+        if (impact < character.GetComponent<StatisticsCharacter>().fist)
         {
-            impact = character.GetComponent<StatisticsCharacter>().kick;
+            impact = character.GetComponent<StatisticsCharacter>().fist;
         }
     }
 
@@ -39,15 +40,15 @@ public class BlueGhostAttackMelee2 : CombatSkills
         damageMax = 6;
         damageMin = 1;
         distance = 1; // When the character increase its level, distanci will be higer
-        hitEffect = 0; // 0 = none, 1 = bleeding, 2 = move, 3 = stun
-        impact = 25;
+        hitEffect = 1; // 0 = none, 1 = bleeding, 2 = move, 3 = stun
+        impact = 50;
         kind = 1; // 1 = melee, 2 = range, 3 = magic
     }
 
     public override void Attack()
     {
         // Using weapon, a message is shown in screen
-        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Prussian Kick");
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Claw of R'lyeh!");
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // If the percentual roll is lower than impact value, the attack is a success
@@ -55,7 +56,6 @@ public class BlueGhostAttackMelee2 : CombatSkills
         {
             InflictDamage();
             // Apply weapon effects if have it
-            // Substract ammo if have it
         }
         else
         {
@@ -67,7 +67,7 @@ public class BlueGhostAttackMelee2 : CombatSkills
     private void InflictDamage()
     {
         // There is damageBonus in Melee Skills
-        damageBonus = GetComponent<StatisticsBlueGhost>().damageBonus;
+        damageBonus = GetComponent<StatisticsDeepOne>().damageBonus;
         // If the attackRoll is a 20% of the impact value, the attack is a critical attack
         if (attackRoll < ((impact * 20) / 100) + criticalMod)
         {
@@ -79,17 +79,13 @@ public class BlueGhostAttackMelee2 : CombatSkills
             // With normal attack the weapon inflicts a random range of damage
             damage = Random.Range(damageMin, damageMax);
         }
+        
         // Adding damageBonus in Melee Skills
         damage += damageBonus;
-        // Update hitPoints in Enemy HUD
-        panelEnemy.GetComponent<PanelEnemyManager>().UpdateHitPoints(damage);
+        print("atacando con el profundo melee");
+        // Update hitPoints in Hero HUD
+        panelHero.GetComponent<PanelHeroManager>().UpdateHitPoints(damage);
         // damage is subtracted from enemy hitPoints
-        enemyCharacter.GetComponent<StatisticsCharacter>().DamageReceived(damage);
-    }
-
-    public void UpdatingEnemySelected(GameObject hitName)
-    {
-        // Capturing Enemy to Attack after being selecting
-        enemyCharacter = hitName;
+        enemyCharacter.GetComponent<StatisticsBlueGhost>().DamageReceived(damage);
     }
 }

@@ -20,7 +20,7 @@ public class StatisticsDagon : StatisticsCharacter
         strength = 52;
 
         fist = 80;
-        shot = 40; // uses shot for summoning skills
+        shoot = 40; // uses shot for summoning skills
 
         damageBonus = strength + size;
         dodge = dexterity * 2;

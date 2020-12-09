@@ -22,10 +22,10 @@ public class BlueGhostAttackMelee1 : CombatSkills
     // Start is called before the first frame update
     void Start()
     {
-        // If impact value is lower than throwing character's hability value
-        if (impact < character.GetComponent<StatisticsCharacter>().throwing)
+        // If impact value is lower than fist character's hability value
+        if (impact < character.GetComponent<StatisticsCharacter>().fist)
         {
-            impact = character.GetComponent<StatisticsCharacter>().throwing;
+            impact = character.GetComponent<StatisticsCharacter>().fist;
         }
     }
 

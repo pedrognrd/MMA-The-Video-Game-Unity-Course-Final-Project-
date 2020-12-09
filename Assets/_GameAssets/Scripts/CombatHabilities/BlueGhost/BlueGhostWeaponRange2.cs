@@ -11,23 +11,21 @@ public class BlueGhostWeaponRange2 : CombatSkills
     // TDOO: Update Arkham threat level
 
     public GameObject textEvent2;
-    private bool ammoManager;
 
     protected override void Awake()
     {
         base.Awake();
         textEvent2 = GameObject.Find("TextEvent2");
-        ammoManager = false;
         LoadingStatistics();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // If impact value is lower than throwing character's hability value
-        if (impact < character.GetComponent<StatisticsCharacter>().throwing)
+        // If impact value is lower than shooting character's hability value
+        if (impact < character.GetComponent<StatisticsCharacter>().shoot)
         {
-            impact = character.GetComponent<StatisticsCharacter>().throwing;
+            impact = character.GetComponent<StatisticsCharacter>().shoot;
         }
     }
 
@@ -90,7 +88,6 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 // Using weapon, a message is shown in screen
                 textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Colt Failed!");
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left:" + ammo);
-                // TODO: Apply weapon effects if have it
             }
             else
             {
@@ -106,10 +103,6 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 }
             }
         }
-    }
-
-    private void AmmoManager() 
-    {
     }
 
     private void InflictDamage()

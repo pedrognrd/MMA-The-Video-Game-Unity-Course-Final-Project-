@@ -22,9 +22,21 @@ public class StatisticsDeepOne : StatisticsCharacter
         fist = 25;
         throwing = 25;
 
-        damageBonus = strength + size;
+        damageBonus = (strength + size) / 4;
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            GetComponent<DeepOneAttackMelee1>().Attack();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GetComponent<DeepOneWeaponRange1>().Attack();
+        }
     }
 }

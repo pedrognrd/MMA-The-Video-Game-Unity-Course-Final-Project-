@@ -18,6 +18,5 @@ public class EnemySelectedManager : MonoBehaviour
         // Sending enemySelected data to PanelEnemy
         panelEnemyManager = GameObject.Find("PanelEnemy");
         panelEnemyManager.GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
-
     }
 }

@@ -20,7 +20,7 @@ public class StatisticsBlueGhost : StatisticsCharacter
         kick = 72;
         medicine = 70;
         throwing = 74;
-        shot = 84;
+        shoot = 84;
 
         damageBonus = (strength + size) / 4;
         dodge = dexterity * 2;

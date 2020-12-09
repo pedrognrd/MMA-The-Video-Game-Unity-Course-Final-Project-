@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PanelEnemyManager : MonoBehaviour
 {
+    [Header("PANEL OBJECTS")] 
     private Text textName;
     private Text textConcept;
     public Text textHitPoints;

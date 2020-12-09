@@ -35,7 +35,7 @@ public abstract class StatisticsCharacter : MonoBehaviour
     public int kick;
     public int medicine;
     public int throwing;
-    public int shot;
+    public int shoot;
 
     [Header("DAMAGES")]
     [Range(4, 9)]
@@ -72,7 +72,7 @@ public abstract class StatisticsCharacter : MonoBehaviour
         {
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
