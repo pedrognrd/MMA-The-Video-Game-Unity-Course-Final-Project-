@@ -25,12 +25,20 @@ public abstract class CombatSkills : MonoBehaviour
     public GameObject panelEnemy;
     public GameObject panelHero;
 
+    // It controls if random attack can be the throwing attack
+    public bool canThrow;
+    // It controls if random attack can be the shoot/summon attack
+    public bool canShoot;
+
     protected virtual void Awake()
     {
         // Capturing Interactive GameObjects
         textEvent1 = GameObject.Find("TextEvent1");
         panelEnemy = GameObject.Find("PanelEnemy");
         panelHero = GameObject.Find("PanelHero");
+
+        canThrow = true;
+        canShoot = true;
     }
 
     public abstract void Attack();

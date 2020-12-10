@@ -12,13 +12,12 @@ public class DeepOneWeaponRange1 : CombatSkills
 
     public int damageBonus;
     public GameObject textEvent2;
-    private bool canThrow;
 
     protected override void Awake()
     {
         base.Awake();
         textEvent2 = GameObject.Find("TextEvent2");
-        canThrow = GetComponent<EnemyManager>().canThrow;
+        canThrow = GetComponent<CombatSkills>().canThrow;
         LoadingStatistics();
         enemyCharacter = GameObject.Find("BlueGhost");
     }

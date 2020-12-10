@@ -5,6 +5,13 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
+Enemy turn:
+	- Update PanelEnemy according Enemy Spawned selected
+
+- Spawning wave of enemies
+	- Controlling ammount of enemies
+	- Spawn them
+	- Does not advance scenary till they die or the player dies
 - Camera following character
 	- Where is Background?
 - Build final city scenary
@@ -39,6 +46,18 @@
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Spawnermanager
+	- If distance between BlueGhost and Spawner < 14
+		- Spawner is active
+		- Instantiate X Deep Ones
+		- Spawner is inactive
+	- After instantiating
+		- Move X of each DeepOne in the scene
+		- Capture each DeepOne
+		- Select randomly one of them
+	- If a spawned enemy dies
+		- Select randomly one of them
+
 - Enemy combat skills
 	- Dagon
 		- Claw

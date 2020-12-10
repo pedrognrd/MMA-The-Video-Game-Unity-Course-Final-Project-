@@ -105,8 +105,6 @@ GameObject:
   - component: {fileID: 2939792270197512312}
   - component: {fileID: 2939792270197512313}
   - component: {fileID: 2939792270197512318}
-  - component: {fileID: 7796481561522713409}
-  - component: {fileID: 7500897858665135640}
   - component: {fileID: 2939792270197512316}
   - component: {fileID: 1954178439}
   - component: {fileID: 1954178438}
@@ -170,33 +168,6 @@ CircleCollider2D:
   m_Offset: {x: -0.018354893, y: -0.04189682}
   serializedVersion: 2
   m_Radius: 2.788713
---- !u!114 &7796481561522713409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2939792270197512317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e9cca6d99c1141998261ff0760c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canThrow: 0
-  canShoot: 0
---- !u!114 &7500897858665135640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2939792270197512317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49878d956e2c5ff4f866bbd88c021650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flyingPointsPrefab: {fileID: 0}
 --- !u!114 &2939792270197512316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +228,8 @@ MonoBehaviour:
   enemyCharacter: {fileID: 0}
   panelEnemy: {fileID: 0}
   panelHero: {fileID: 0}
+  canThrow: 0
+  canShoot: 0
   damageBonus: 0
 --- !u!114 &1954178438
 MonoBehaviour:
@@ -275,6 +248,8 @@ MonoBehaviour:
   enemyCharacter: {fileID: 0}
   panelEnemy: {fileID: 0}
   panelHero: {fileID: 0}
+  canThrow: 0
+  canShoot: 0
   damageBonus: 0
   textEvent2: {fileID: 0}
 --- !u!1 &6388848825154946734
@@ -288,7 +263,7 @@ GameObject:
   - component: {fileID: 7592059677325386893}
   - component: {fileID: 620041294}
   m_Layer: 8
-  m_Name: spawnerFlyingPoints
+  m_Name: SpawnerFlyingPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -66,13 +66,13 @@ public abstract class StatisticsCharacter : MonoBehaviour
     {
         hitPoints -= damage;
         // Instantiate flying points
-        GetComponent<FlyingPointsManager>().InstantiateFlyingPoints(damage);
+        GetComponentInChildren<FlyingPointsManager>().InstantiateFlyingPoints(damage);
         // Is the enemy dead?
         if (hitPoints <= 0)
         {
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 

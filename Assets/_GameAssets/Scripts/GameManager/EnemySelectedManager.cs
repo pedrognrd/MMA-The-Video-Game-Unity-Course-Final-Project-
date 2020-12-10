@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySelectedManager : MonoBehaviour
 {
+    // THIS CLASS CONTROLS THE SELECTED ENEMY
+    // 
     GameObject panelEnemyManager;
     GameObject blueGhost;
 

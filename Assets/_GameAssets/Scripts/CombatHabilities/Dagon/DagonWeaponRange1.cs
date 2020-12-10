@@ -12,13 +12,16 @@ public class DagonWeaponRange1 : CombatSkills
 
     public int damageBonus;
     public GameObject textEvent2;
-    private bool canShoot;
+    public int spawnNumber;
+    private int minEnemies = 1;
+    private int maxEnemies = 3;
 
     protected override void Awake()
     {
         base.Awake();
         textEvent2 = GameObject.Find("TextEvent2");
-        canShoot = GetComponent<EnemyManager>().canShoot;
+        //canShoot = GetComponent<CombatSkills>().canShoot;
+        //canShoot = true;
         LoadingStatistics();
         enemyCharacter = GameObject.Find("BlueGhost");
     }
@@ -69,7 +72,7 @@ public class DagonWeaponRange1 : CombatSkills
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Summoning cast fails!");
             }
             // DeepOne will no longer be able to throw Spear
-            //canShoot = false;
+            canShoot = false;
         }
         else
         {
@@ -80,7 +83,7 @@ public class DagonWeaponRange1 : CombatSkills
 
     private void InflictDamage()
     {
-        print("A InstantiateDeepOne");
-        GameObject.Find("SpawnerDeepOne").GetComponent<SpawnerEnemies>().SpawnDeepOnes();
+        spawnNumber = Random.Range(minEnemies, maxEnemies);
+        GameObject.Find("DagonSpawner").GetComponent<SpawnerEnemies>().SpawnDeepOnes(spawnNumber);
     }
 }
