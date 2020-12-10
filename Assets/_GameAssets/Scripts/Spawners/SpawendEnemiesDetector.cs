@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
+using System.Collections;
 using System.Reflection;
 
 public class SpawendEnemiesDetector : MonoBehaviour
@@ -31,49 +29,50 @@ public class SpawendEnemiesDetector : MonoBehaviour
     private void Update()
     {
         // TODO control not choosing Dagon if spawningWaves < 4
-        // TODO control  choosing Dagon if spawningWaves <= 4
-        if (spawningWaves <= 4)
+        // TODO control choosing Dagon if spawningWaves <= 4
+        if (spawningWaves < 4)
         {
-            if (enemyDied)
+            DiedOrSpawned();
+            //print("isDagon " + isDagon);
+            if (isDagon)
             {
-                StartCoroutine(ExecuteAfterTime(2));
-                print("MURIO");
-                enemyDied = false;
+                StartCoroutine(ExecuteAfterTime(1));
+                isDagon = false;
             }
+        }
+        if (spawningWaves == 4)
+        {
+            DiedOrSpawned();
+        }
 
-            if (spawned)
-            {
-                StartCoroutine(ExecuteAfterTime(2));
-                spawned = false;
-            }
+    }
+
+    private void DiedOrSpawned()
+    {
+        if (enemyDied || spawned)
+        {
+            StartCoroutine(ExecuteAfterTime(1));
+            //print("MURIO");
+            enemyDied = false;
+            spawned = false;
         }
     }
 
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-
         // Code to execute after the delay
-        print("en la co-rutina");
         DetectEnemies();
-    }
-
-    public void ClearLog()
-    {
-        var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
-        var type = assembly.GetType("UnityEditor.LogEntries");
-        var method = type.GetMethod("Clear");
-        method.Invoke(new object(), null);
     }
 
     // Create of array that detects the active enemies in scene
     public void DetectEnemies()
     {
-        ClearLog();
-        print("enemies.Length ANTES" + enemies.Length);
-        print("enemyDied ANTES" + enemyDied);
+        GameObject.Find("GameManager").GetComponent<GameManager>().ClearLog();
+        //print("enemies.Length ANTES" + enemies.Length);
+        //print("enemyDied ANTES" + enemyDied);
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        print("enemies.Length DESPUES" + enemies.Length); 
+        //print("enemies.Length DESPUES" + enemies.Length); 
         PaintItWhite();
         SelectEnemy();
     }
@@ -91,6 +90,15 @@ public class SpawendEnemiesDetector : MonoBehaviour
         int index = Random.Range(0, enemies.Length);
         enemySelected = enemies[index];
         enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        // Showing enemySelected data in PanelEnemy
+        GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
+        // By default, BlueGhost will attack to the enemySelected
+        GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().EnemySelected(enemySelected);
+        //print("enemySelected.name " + enemySelected.name);
+        if (enemySelected.name == "Dagon")
+        {
+            isDagon = true;
+        }
     }
     public void SpawningWaves(int ammount)
     {

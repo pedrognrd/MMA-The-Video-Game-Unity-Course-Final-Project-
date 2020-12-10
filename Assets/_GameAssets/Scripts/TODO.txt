@@ -5,24 +5,34 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- OLEADAS MANAGER FUNCIONA
-- TODO control not choosing Dagon if spawningWaves < 4
-- TODO control choosing Dagon if spawningWaves <= 4
-
-- Spawnermanager
-	- If a spawned enemy dies
-		- Paint all spawned enemies in white
-		- Select randomly one of them
-
 Enemy turn:
 	- Update PanelEnemy according Enemy Spawned selected
+	- Create turn sequence
+		- Text: New turn 
+		- Select randomly who starts the turn
+		    - Clean panel texts of the second player
+		- Play actions of first to play (player or each enemy)
+		    - Select action/s
+		    - Execute action/s
+		- Play actions of second to play (player or each enemy)
+		    - Select action/s
+		    - Execute action/s
+		- Turn counter ++
+		- If both had played --> New Turn
+
+- Update threat level
+- Update Arkham threat level
+- Spawnermanager
+	- Controll when Dagon summoning spells
+
+- Turn Number Manager
+	- It increases When:
+		- Player Play its Actions
+		- All enemies in scene play its actions
 
 - Spawning wave of enemies
-	- Controlling ammount of enemies
-	- Spawn them
 	- Does not advance scenary till they die or the player dies
-- Camera following character
-	- Where is Background?
+
 - Build final city scenary
 	- Locate the different spawner points all along the city
 		- Deep One spawner
@@ -55,7 +65,18 @@ Enemy turn:
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Spawning wave of enemies
+	- Controlling ammount of enemies
+	- Spawn them
+
+- Camera following character
+	- Where is Background?
 - Spawnermanager
+	- If a spawned enemy dies
+		- Paint all spawned enemies in white
+		- Select randomly one of them
+			- Not choosing Dagon if spawningWaves < 4
+			- Choosing Dagon if spawningWaves <= 4
 	- If distance between BlueGhost and Spawner < 14
 		- Spawner is active
 		- Instantiate X Deep Ones

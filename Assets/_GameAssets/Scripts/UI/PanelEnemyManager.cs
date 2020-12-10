@@ -18,7 +18,7 @@ public class PanelEnemyManager : MonoBehaviour
     private void Start()
     {
         // Capture Hero statistics
-        LoadingStatistics();
+        //LoadingStatistics();
     }
 
     public void UpdateEnemyPanel(GameObject hitName)

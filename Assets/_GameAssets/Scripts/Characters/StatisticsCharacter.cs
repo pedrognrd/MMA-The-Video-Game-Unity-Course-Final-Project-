@@ -84,8 +84,6 @@ public abstract class StatisticsCharacter : MonoBehaviour
         }
     }
 
-    
-
     public void characterClicked()
     {
         if (Input.GetMouseButtonDown(0))
@@ -116,7 +114,6 @@ public abstract class StatisticsCharacter : MonoBehaviour
                 {
                     string hitName = hit.collider.name;
                     GameObject controlledUnit = hit.transform.gameObject;
-                    //gameManager.GetComponent<EnemySelectedManager>().EnemySelected(hitName);
                     gameManager.GetComponent<EnemySelectedManager>().EnemySelected(controlledUnit);
                 }
             }
