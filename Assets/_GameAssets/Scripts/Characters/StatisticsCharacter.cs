@@ -72,9 +72,19 @@ public abstract class StatisticsCharacter : MonoBehaviour
         {
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
-            Destroy(gameObject);
+            if (gameObject.name == "BlueGhost")
+            {
+                Destroy(gameObject);
+            }
+            else 
+            {
+                GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().enemyDied = true;
+                Destroy(gameObject);
+            }
         }
     }
+
+    
 
     public void characterClicked()
     {
@@ -113,3 +123,4 @@ public abstract class StatisticsCharacter : MonoBehaviour
         }
     }
 }
+

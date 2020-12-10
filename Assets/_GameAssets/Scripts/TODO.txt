@@ -5,6 +5,15 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
+- OLEADAS MANAGER FUNCIONA
+- TODO control not choosing Dagon if spawningWaves < 4
+- TODO control choosing Dagon if spawningWaves <= 4
+
+- Spawnermanager
+	- If a spawned enemy dies
+		- Paint all spawned enemies in white
+		- Select randomly one of them
+
 Enemy turn:
 	- Update PanelEnemy according Enemy Spawned selected
 
@@ -54,8 +63,6 @@ Enemy turn:
 	- After instantiating
 		- Move X of each DeepOne in the scene
 		- Capture each DeepOne
-		- Select randomly one of them
-	- If a spawned enemy dies
 		- Select randomly one of them
 
 - Enemy combat skills

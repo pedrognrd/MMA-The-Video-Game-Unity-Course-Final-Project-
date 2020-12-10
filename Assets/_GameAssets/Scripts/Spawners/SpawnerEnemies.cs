@@ -17,7 +17,6 @@ public class SpawnerEnemies : MonoBehaviour
     {
         enemiesCreated = 0;
         spawning = number;
-        print("spawning " + spawning);
         InvokeRepeating("Spawning", 0, timeBetweenInstances);
     }
 
@@ -29,8 +28,10 @@ public class SpawnerEnemies : MonoBehaviour
         if (enemiesCreated >= spawning)
         {
             CancelInvoke();
-            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().spawning = true;
-            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().DetectEnemies();
+            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().SpawningWaves(1);
+            //GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().enemyDied = false;
+            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().spawned = true;
+            
         }
     }
 }

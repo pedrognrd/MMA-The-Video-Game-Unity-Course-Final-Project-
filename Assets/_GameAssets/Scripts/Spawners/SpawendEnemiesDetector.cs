@@ -2,77 +2,99 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Reflection;
 
 public class SpawendEnemiesDetector : MonoBehaviour
 {
     // THIS CLASS CONTROLS THE AMMOUNT OF ENEMIES IN SCENE
+    // It will be working when any spawner point is spawning or a enemy dies
     public bool selectingEnemy;
-    // It will be working when any spawner point is spawning
-    public bool spawning;
     // In the demo, there will be 4 spawning points working
     public int spawningWaves;
     // Array with the enemies in scene
     public GameObject[] enemies;
-
+    // 
     public GameObject enemySelected;
-
+    public bool enemyDied;
+    public bool spawned;
+    public bool isDagon;
 
     private void Awake()
     {
         selectingEnemy = false;
-        spawning = false;
+        enemyDied = false;
+        spawned = false;
+        isDagon = false; 
         spawningWaves = 0;
     }
 
     private void Update()
     {
-        //DetectEnemies();
-        if (selectingEnemy) 
+        // TODO control not choosing Dagon if spawningWaves < 4
+        // TODO control  choosing Dagon if spawningWaves <= 4
+        if (spawningWaves <= 4)
         {
-            SelectEnemy(enemies);
-            if (spawningWaves < 4)
+            if (enemyDied)
             {
-                if (enemySelected.name == "Dagon")
-                {
-                    enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-                    selectingEnemy = true;
-                }
+                StartCoroutine(ExecuteAfterTime(2));
+                print("MURIO");
+                enemyDied = false;
+            }
+
+            if (spawned)
+            {
+                StartCoroutine(ExecuteAfterTime(2));
+                spawned = false;
             }
         }
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
+        print("en la co-rutina");
+        DetectEnemies();
+    }
+
+    public void ClearLog()
+    {
+        var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
+        var type = assembly.GetType("UnityEditor.LogEntries");
+        var method = type.GetMethod("Clear");
+        method.Invoke(new object(), null);
     }
 
     // Create of array that detects the active enemies in scene
     public void DetectEnemies()
     {
+        ClearLog();
+        print("enemies.Length ANTES" + enemies.Length);
+        print("enemyDied ANTES" + enemyDied);
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        print("enemies antes del if" + enemies.Length);
-        if (spawning)
+        print("enemies.Length DESPUES" + enemies.Length); 
+        PaintItWhite();
+        SelectEnemy();
+    }
+
+    public void PaintItWhite()
+    {
+        foreach (GameObject enemy in enemies) 
         {
-            foreach (GameObject enemy in enemies)
-            {
-                print("enemy" + enemy.name);
-                // Dagon will not be selected for random enemy selection till the fourth wave of spawning
-                if (spawningWaves < 4)
-                {
-                    // CREATE METHOD FOR RANDOM SELECTION WITHOUT DAGON
-                }
-                else {
-                    // CREATE METHOD FOR RANDOM SELECTION WITH DAGON
-                }
-            }
-            spawning = false;
-            selectingEnemy = true;
-            spawningWaves++;
+            enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
     }
 
-    private void SelectEnemy(GameObject[] enemies) 
+    public void SelectEnemy()
     {
         int index = Random.Range(0, enemies.Length);
         enemySelected = enemies[index];
         enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
-        selectingEnemy = false;
-        print("Enemy selected " + enemySelected.name);
+    }
+    public void SpawningWaves(int ammount)
+    {
+        spawningWaves += ammount;
     }
 }
                 
