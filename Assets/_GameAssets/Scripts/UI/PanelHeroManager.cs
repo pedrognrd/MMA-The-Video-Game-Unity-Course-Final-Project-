@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PanelHeroManager : MonoBehaviour
 {
+    // HUD Hero data
+    [Header("PANEL OBJECTS")]
     private Text textName;
     private Text textConcept;
     private Text textHitPoints;
@@ -15,10 +17,38 @@ public class PanelHeroManager : MonoBehaviour
     private int sanity;
     private int sanityMax;
 
+    // HUD Hero Buttons
+    [Header("PANEL BUTTONS")]
+    public Button attackMelee1;
+    public Button attackMelee2;
+    public Button attackRange1;
+    public Button attackRange2;
+    public GameObject button1;
+
     private void Start()
     {
         // Capture Hero statistics
         LoadingStatistics();
+        // Disable all Hero buttons
+        DisableHUD();
+    }
+
+    public void EnableHUD()
+    {
+        attackMelee1.interactable = true;
+        attackMelee2.interactable = true;
+        attackRange1.interactable = true;
+        attackRange2.interactable = true;
+       // button1.GetComponent<Button>.setActive(false);
+    }
+
+    public void DisableHUD()
+    {
+        print("en DisableHUD del hero");
+        attackMelee1.interactable = false;
+        attackMelee2.interactable = false;
+        attackRange1.interactable = false;
+        attackRange2.interactable = false;
     }
 
     public void UpdateEnemyPanel(GameObject hitName)

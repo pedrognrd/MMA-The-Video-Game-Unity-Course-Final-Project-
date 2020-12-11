@@ -9,13 +9,5 @@ public abstract class PanelCharacterManager : MonoBehaviour
     [Header("PANEL OBJECTS")]
     [SerializeField]
     private Image avatarCharacter;
-    private Text textName;
-    /*[SerializeField]
-    private GameObject name;
-    private Text concept;
-    [SerializeField] 
-    private Text hitPoints;
-    [SerializeField] 
-    private Text sanityPoints;*/
 }
 

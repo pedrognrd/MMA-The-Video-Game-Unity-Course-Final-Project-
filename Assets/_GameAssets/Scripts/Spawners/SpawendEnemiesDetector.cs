@@ -45,6 +45,14 @@ public class SpawendEnemiesDetector : MonoBehaviour
             DiedOrSpawned();
         }
 
+        if (enemies.Length == 0)
+        {
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
+        }
+        else 
+        {
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
+        }
     }
 
     private void DiedOrSpawned()
@@ -52,7 +60,6 @@ public class SpawendEnemiesDetector : MonoBehaviour
         if (enemyDied || spawned)
         {
             StartCoroutine(ExecuteAfterTime(1));
-            //print("MURIO");
             enemyDied = false;
             spawned = false;
         }
@@ -87,18 +94,20 @@ public class SpawendEnemiesDetector : MonoBehaviour
 
     public void SelectEnemy()
     {
+        // Selectinh an enemy in enemies array
         int index = Random.Range(0, enemies.Length);
         enemySelected = enemies[index];
+        // Turning blue to highlight the chosen enemy
         enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         // Showing enemySelected data in PanelEnemy
         GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
         // By default, BlueGhost will attack to the enemySelected
         GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().EnemySelected(enemySelected);
-        //print("enemySelected.name " + enemySelected.name);
         if (enemySelected.name == "Dagon")
         {
             isDagon = true;
         }
+        GameObject.Find("GameManager").GetComponent<GameManager>().enemySelected = true;
     }
     public void SpawningWaves(int ammount)
     {

@@ -5,20 +5,27 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-Enemy turn:
-	- Update PanelEnemy according Enemy Spawned selected
+PROBAR : yourButton.interactable = false;
+
+- Turn order:
+	- Disable hero buttons DONE
+	- Update PanelEnemy according Enemy Spawned selected DONE
 	- Create turn sequence
-		- Text: New turn 
-		- Select randomly who starts the turn
-		    - Clean panel texts of the second player
-		- Play actions of first to play (player or each enemy)
-		    - Select action/s
-		    - Execute action/s
-		- Play actions of second to play (player or each enemy)
-		    - Select action/s
-		    - Execute action/s
-		- Turn counter ++
+		- Text: New turn DONE 
+		- Select randomly who starts the turn DONE
+		    - Clean panel texts of the second player DONE
+			- Enable hero buttons DONE
+		- Play actions of first to play (player or each enemy) DONE
+		    - Select action/s DONE
+		    - Execute action/s DONE
+			- Disable hero buttons (if first) DONE
+		- Play actions of second to play (player or each enemy) 
+		    - Select action/s DONE
+		    - Execute action/s DONE
+			- Disable hero buttons (if first)
+		- Turn counter ++ DONE
 		- If both had played --> New Turn
+			- counter = 0 when all spawned enemies are death
 
 - Update threat level
 - Update Arkham threat level

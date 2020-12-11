@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PanelEnemyManager : MonoBehaviour
 {
+    // HUD Enemy data
     [Header("PANEL OBJECTS")] 
     private Text textName;
     private Text textConcept;
@@ -15,12 +16,35 @@ public class PanelEnemyManager : MonoBehaviour
     private int sanity;
     private int sanityMax;
 
+    // HUD Enemy Buttons
+    [Header("PANEL BUTTONS")]
+    public Button attackMelee1;
+    public Button attackMelee2;
+    public Button attackRange1;
+    public Button attackRange2;
+
     private void Start()
     {
-        // Capture Hero statistics
-        //LoadingStatistics();
+        // Disable all Enemy buttons
+        //DisableHUD();
     }
 
+    public void EnableHUD()
+    {
+        attackMelee1.interactable = true;
+        attackMelee2.interactable = true;
+        attackRange1.interactable = true;
+        attackRange2.interactable = true;
+    }
+
+    public void DisableHUD()
+    {
+        print("en DisableHUD del enemy");
+        attackMelee1.interactable = false;
+        attackMelee2.interactable = false;
+        attackRange1.interactable = false;
+        attackRange2.interactable = false;
+    }
     public void UpdateEnemyPanel(GameObject hitName)
     {
         // Loading enemySelected data received into PanelEnemy
