@@ -21,6 +21,7 @@ public abstract class CombatSkills : MonoBehaviour
     protected GameObject character;
 
     public GameObject textEvent1;
+    public GameObject textEvent2;
     public GameObject enemyCharacter;
     public GameObject panelEnemy;
     public GameObject panelHero;
@@ -34,6 +35,7 @@ public abstract class CombatSkills : MonoBehaviour
     {
         // Capturing Interactive GameObjects
         textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
         panelEnemy = GameObject.Find("PanelEnemy");
         panelHero = GameObject.Find("PanelHero");
 

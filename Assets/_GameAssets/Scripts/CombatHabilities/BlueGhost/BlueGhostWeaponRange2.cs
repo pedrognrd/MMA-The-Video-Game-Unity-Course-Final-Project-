@@ -10,12 +10,9 @@ public class BlueGhostWeaponRange2 : CombatSkills
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
 
-    public GameObject textEvent2;
-
     protected override void Awake()
     {
         base.Awake();
-        textEvent2 = GameObject.Find("TextEvent2");
         LoadingStatistics();
     }
 
@@ -27,10 +24,6 @@ public class BlueGhostWeaponRange2 : CombatSkills
         {
             impact = character.GetComponent<StatisticsCharacter>().shoot;
         }
-    }
-
-    private void Update()
-    {
     }
 
     private void LoadingStatistics()
@@ -103,6 +96,7 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 }
             }
         }
+        GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
     }
 
     private void InflictDamage()

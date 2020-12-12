@@ -11,11 +11,16 @@ public class DeepOneAttackMelee1 : CombatSkills
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
 
+    public GameObject textEvent1;
+    public GameObject textEvent2;
     public int damageBonus;
 
     protected override void Awake()
     {
         base.Awake();
+        // Capturing Interactive GameObjects
+        textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
         LoadingStatistics();
         enemyCharacter = GameObject.Find("BlueGhost");
     }
@@ -60,7 +65,7 @@ public class DeepOneAttackMelee1 : CombatSkills
         else
         {
             // The attack is a failed, a message is shown in screen
-            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
         }
     }
 

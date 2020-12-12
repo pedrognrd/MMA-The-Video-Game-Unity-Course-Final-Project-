@@ -10,6 +10,16 @@ public class EnemySelectedManager : MonoBehaviour
     public GameObject enemySelected;
     public string[] enemyAttacks = new string[] { "Melee", "Range" };
     public string attack;
+    [Header("Elements in Canvas")]
+    private GameObject textEvent1;
+    private GameObject textEvent2;
+
+    private void Awake()
+    {
+        // Capturing text fields and panels of the Canvas
+        textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
+    }
 
     public void chooseAttack() 
     {
@@ -23,12 +33,13 @@ public class EnemySelectedManager : MonoBehaviour
         // Code to execute after the delay
         if (enemySelected.layer == 8)
         {
+            attack = "Range";
             if (attack == "Melee")
             {
                 print("attack melee" + attack);
                 enemySelected.GetComponent<DeepOneAttackMelee1>().Attack();
             }
-            else
+            if (attack == "Range")
             {
                 print("attack range " + attack);
                 enemySelected.GetComponent<DeepOneWeaponRange1>().Attack();
@@ -47,34 +58,41 @@ public class EnemySelectedManager : MonoBehaviour
             }
         }
         // If Blue Ghost was the first to play, the turn sequence is finished
-        if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoIsFirst == "BlueGhost")
+        if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoIsPlaying == "BlueGhost")
         {
             print("Disabling Blue Ghost buttons panel");
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
             print("final de turno");
-            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+            //GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+            //GetComponent<TurnSequenceManager>().FinishingTurn();
+            StartCoroutine(EnemyFinished(2));
         }
         else 
         {
             print("Enabling Blue Ghost buttons panel");
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
-            print("Waiting till Blue Ghost plays its turn");
+            StartCoroutine(EnemyWaiting(2));
         }
+    }
+
+    IEnumerator EnemyFinished(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        GetComponent<TurnSequenceManager>().FinishingTurn();
+    }
+
+    IEnumerator EnemyWaiting(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Ghost, is your turn!");
     }
 
     public void Enemydied()
     {
-        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame > 0)
-        {
-            print("Starting new turn sequence");
-            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
-            GetComponent<TurnSequenceManager>().turnSequenceDone = false;
-        }
-        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame == 0)
-        {
-            print("Combat Sequence Finished ");
-            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
-        }
+        print("Evaluate if there are more enemies in game");
+        GetComponent<TurnSequenceManager>().FinishingTurn();
     }
 
     public void EnemySelected(GameObject enemySend)

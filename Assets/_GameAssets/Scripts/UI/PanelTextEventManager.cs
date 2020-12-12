@@ -14,7 +14,7 @@ public class PanelTextEventManager : MonoBehaviour
     public void UpdateText(string currentEvent) {
         textCurrentEvent.enabled = true;
         textCurrentEvent.text = currentEvent;
-        Invoke("HideText", 4);//this will happen after X seconds
+        Invoke("HideText", 2);//this will happen after X seconds
     }
     public void HideText() 
     {

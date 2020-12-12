@@ -58,6 +58,7 @@ public class BlueGhostWeaponRange1 : CombatSkills
             // The attack is a failed, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
         }
+        GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
     }
 
     private void InflictDamage()

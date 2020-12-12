@@ -11,7 +11,6 @@ public class DagonWeaponRange1 : CombatSkills
     // TDOO: Update Arkham threat level
 
     public int damageBonus;
-    public GameObject textEvent2;
     public int spawnNumber;
     private int minEnemies = 1;
     private int maxEnemies = 3;
@@ -19,7 +18,6 @@ public class DagonWeaponRange1 : CombatSkills
     protected override void Awake()
     {
         base.Awake();
-        textEvent2 = GameObject.Find("TextEvent2");
         //canShoot = GetComponent<CombatSkills>().canShoot;
         //canShoot = true;
         LoadingStatistics();

@@ -11,12 +11,10 @@ public class DeepOneWeaponRange1 : CombatSkills
     // TDOO: Update Arkham threat level
 
     public int damageBonus;
-    public GameObject textEvent2;
 
     protected override void Awake()
     {
         base.Awake();
-        textEvent2 = GameObject.Find("TextEvent2");
         canThrow = GetComponent<CombatSkills>().canThrow;
         LoadingStatistics();
         enemyCharacter = GameObject.Find("BlueGhost");

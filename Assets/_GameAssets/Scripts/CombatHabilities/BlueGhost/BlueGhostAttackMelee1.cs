@@ -55,15 +55,13 @@ public class BlueGhostAttackMelee1 : CombatSkills
         {
             InflictDamage();
             // Apply weapon effects if have it
-            // Substract ammo if have it
         }
         else
         {
             // The attack is a failed, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
         }
-        //GameObject.Find("GameManager").GetComponent<GameManager>().playerHeroActionDone = true;
-        GameObject.Find("GameManager").GetComponent<CharacterTurnManager>().blueGhostFinishedTurn = true;
+        GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
     }
 
     private void InflictDamage()

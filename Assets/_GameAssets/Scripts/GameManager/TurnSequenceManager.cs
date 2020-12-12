@@ -5,42 +5,11 @@ using UnityEngine;
 public class TurnSequenceManager : MonoBehaviour
 {
     // THIS CLASS CONTROLS THE TURN SEQUENCE AS FOLLOWS
-    /// <summary>
-    /// - Choose player
-    ///     - If Blue Ghost First
-    ///         - Blue Ghost Turn
-    ///             - Choose Blue Ghost action
-    ///             - Select enemy
-    ///             - Play Blue Ghost action
-    ///         - Enemy Turn
-    ///             - Select enemy
-    ///             - Choose Random Enemy action
-    ///             - Play Random Enemy action
-    ///         - End turn sequence
-    ///         
-    ///     - If Enemy First
-    ///         - Enemy Turn
-    ///             - Select enemy
-    ///             - Choose Random Enemy action
-    ///             - Play Random Enemy action
-    ///         - Blue Ghost Turn
-    ///             - Choose Blue Ghost action
-    ///             - Select enemy
-    ///             - Play Blue Ghost action
-    ///         - End turn sequence
-    ///         
-    /// - If there are more enemies
-    ///     - Turn counter ++
-    ///     - New Turn Sequence
-    /// - If there are no mor enemies
-    ///     - Continue Walking
-    /// </summary>
-
     // Store both kind of players in game
     [Header("Players and who's first in turn order")]
     public string[] players = new string[] { "BlueGhost", "Enemy" };
     // Will define who acts first in each turn
-    public string whoIsFirst;
+    public string whoIsPlaying;
     [Header("Enemy selected")]
     // Enemy selected for each turn
     public GameObject enemySelected;
@@ -52,55 +21,44 @@ public class TurnSequenceManager : MonoBehaviour
     // Define if enemy had played the turn action
     public bool playerEnemyPlayed;
 
+    [Header("Elements in Canvas")]
+    private GameObject textEvent1;
+    private GameObject textEvent2;
+
     // Controls if turn sequence is done
     // False --> playing
     // True  --> played
-    public bool turnSequenceDone;
-
+    //public bool turnSequenceDone;
 
     private void Awake()
     {
-        turnSequenceDone = true;
+        // Capturing text fields and panels of the Canvas
+        textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
+        //turnSequenceDone = true;
     }
 
     private void Update()
     {
-        if (!turnSequenceDone)
+        /*if (!turnSequenceDone)
         {
-            // Cleaning console
-            GetComponent<GameManager>().ClearLog();
-            print("Starting new Combat Sequence");
-            print("Enemies spawned " + GetComponent<SpawnedEnemiesDetector>().enemiesInGame);
-            // Select who is first to play the turn
-            WhoIsFirst();
-            // Playing action of the first to play
-            FirstToPlay();
+            NewTurn();
             turnSequenceDone = true;
-        }
+        }*/
     }
 
-    public void FirstToPlay()
+    public void NewTurn()
     {
-        print("Detecting enemies in scene");
-        GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
-        if (whoIsFirst == "BlueGhost")
-        {
-            print("Enabling Blue Ghost buttons panel");
-            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
-            print("Waiting till Blue Ghost plays its turn");
-        }
-        if (whoIsFirst == "Enemy")
-        {
-            print("Disabling Blue Ghost buttons panel");
-            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
-            print("Selecting enemy");
-            EnemyPlays();
-        }
-    }
-
-    public void SecondToPlay() 
-    {
-        print("Second to play");
+        // Cleaning console
+        //GetComponent<GameManager>().ClearLog();
+        GetComponent<CombatManager>().turnCounter++;
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Turn " + GetComponent<CombatManager>().turnCounter);
+        print("Starting new Combat Sequence");
+        print("Enemies spawned " + GetComponent<SpawnedEnemiesDetector>().enemiesInGame);
+        // Select who is first to play the turn
+        WhoIsPlaying();
+        // Playing action of the first to play
+        FirstToPlay();
     }
 
     public void EnemyPlays()
@@ -121,10 +79,52 @@ public class TurnSequenceManager : MonoBehaviour
         GetComponent<EnemySelectedManager>().chooseAttack();
     }
 
-    public void WhoIsFirst()
+    public void FirstToPlay()
+    {
+        print("Detecting enemies in scene");
+        GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
+        if (whoIsPlaying == "BlueGhost")
+        {
+            print("Enabling Blue Ghost buttons panel");
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
+            print("Waiting till Blue Ghost plays its turn");
+        }
+        if (whoIsPlaying == "Enemy")
+        {
+            print("Disabling Blue Ghost buttons panel");
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
+            print("Selecting enemy");
+            EnemyPlays();
+            //textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Ghost, is your turn");
+        }
+    }
+
+    public void FinishingTurn() 
+    {
+        print("After both players play its actions, evaluate if there will be a new turn");
+        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame > 0)
+        {
+            print("New turn");
+            //GetComponent<CombatManager>().NewCombat();
+            print("Starting new turn sequence");
+            //GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+            //GetComponent<TurnSequenceManager>().turnSequenceDone = false; 
+            GetComponent<TurnSequenceManager>().NewTurn();
+            
+        }
+        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame == 0)
+        {
+            print("Combat Sequence Finished ");
+            GetComponent<CombatManager>().CombatEnds();
+            //GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+        }
+    }
+
+    public void WhoIsPlaying()
     {
         // Selecting Hero or Enemy to play first in Turn Sequence
-        whoIsFirst = players[Random.Range(0, players.Length)];
-        print("whoIsFirst " + whoIsFirst);
+        whoIsPlaying = players[Random.Range(0, players.Length)];
+        print("whoIsFirst " + whoIsPlaying);
+        textEvent2.GetComponent<PanelTextEventManager>().UpdateText("It is " + whoIsPlaying + " turn"); 
     }
 }

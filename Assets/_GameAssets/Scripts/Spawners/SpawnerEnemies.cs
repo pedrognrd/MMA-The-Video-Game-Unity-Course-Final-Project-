@@ -28,12 +28,10 @@ public class SpawnerEnemies : MonoBehaviour
         if (enemiesCreated >= spawning)
         {
             CancelInvoke();
-            //GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().SpawningWaves(1);
             GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame = enemiesCreated;
-            //GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().spawned = true;
-            // TODO EN GAMEMANAGER CONTROLAR QUE ESTAMOS EN SECUENCIA DE COMBATE
+            GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
             // Start new combat sequence
-            GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().turnSequenceDone = false;
+            GameObject.Find("GameManager").GetComponent<CombatManager>().NewCombat();
         }
     }
 }

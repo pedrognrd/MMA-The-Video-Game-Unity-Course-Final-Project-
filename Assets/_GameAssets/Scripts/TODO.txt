@@ -6,13 +6,10 @@
 
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
-
-- Turn Sequence
-	- If there are more enemies
-		- Turn counter ++
-        - New Turn Sequence
-    - If there are no more enemies
-		- Continue Walking
+- In Deep Ones:
+	- if !canThrow --> Select always melee attack
+- Paint in white enemies when a enemy dies
+- Move spawned enemies to see all in scene
 
 - Update threat level
 - Update Arkham threat level
@@ -59,6 +56,7 @@ PROBAR : yourButton.interactable = false;
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Combat Manager
 - Turn Sequence
 	- Choose player
 		- If Blue Ghost First
@@ -82,6 +80,12 @@ PROBAR : yourButton.interactable = false;
 		            - Select enemy
 		            - Play Blue Ghost action
 		        - End turn sequence
+	- Turn Sequence
+		- If there are more enemies
+			- Turn counter ++
+			- New Turn Sequence
+		- If there are no more enemies
+			- Continue Walking
 
 - Spawning wave of enemies
 	- Controlling ammount of enemies
