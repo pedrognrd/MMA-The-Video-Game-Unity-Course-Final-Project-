@@ -1480,8 +1480,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401155131}
-  - component: {fileID: 401155132}
   - component: {fileID: 401155133}
+  - component: {fileID: 401155132}
   m_Layer: 0
   m_Name: DagonSpawner
   m_TagString: Untagged
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaf9c394300d794f965865152445bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnNumber: 0
+  spawnNumber: 1
 --- !u!1 &424168008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7137117, y: -14.883345, z: 69.700935}
+  m_LocalPosition: {x: 4.714528, y: -14.883345, z: 69.700935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1461265253}
@@ -2798,8 +2798,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702955966}
-  - component: {fileID: 702955967}
   - component: {fileID: 702955968}
+  - component: {fileID: 702955967}
   m_Layer: 0
   m_Name: DeepOneSpawner1
   m_TagString: Untagged
@@ -4667,8 +4667,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1261835836}
-  - component: {fileID: 1261835838}
   - component: {fileID: 1261835837}
+  - component: {fileID: 1261835838}
   m_Layer: 0
   m_Name: DeepOneSpawne2
   m_TagString: Untagged
@@ -5735,7 +5735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495344870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7137117, y: -14.883345, z: 69.700935}
+  m_LocalPosition: {x: 4.714528, y: -14.883345, z: 69.700935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1934983269}
@@ -6488,8 +6488,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1824272268}
-  - component: {fileID: 1824272270}
   - component: {fileID: 1824272269}
+  - component: {fileID: 1824272270}
   m_Layer: 0
   m_Name: DeepOneSpawne3
   m_TagString: Untagged
@@ -7162,9 +7162,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2035770749}
   - component: {fileID: 2035770748}
+  - component: {fileID: 2035770753}
+  - component: {fileID: 2035770751}
   - component: {fileID: 2035770750}
   - component: {fileID: 2035770752}
-  - component: {fileID: 2035770751}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7184,14 +7185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a066082a242ef42864b51c389ef8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - BlueGhost
-  - Enemy
-  whoIsFirst: 
-  playerHeroPlayed: 0
-  playerHeroActionDone: 0
-  playerEnemyPlayed: 0
-  playerEnemyActionDone: 0
+  turnCounter: 0
 --- !u!4 &2035770749
 Transform:
   m_ObjectHideFlags: 0
@@ -7218,6 +7212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7f805a360808c45a4c5478cf9da327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySelected: {fileID: 0}
   enemyAttacks:
   - Melee
   - Range
@@ -7231,16 +7226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2035770747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94529625bddfdbb42b46e2f2e0a7b2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d06e0fa0490c074bb771a8aac99bdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectingEnemy: 0
-  spawningWaves: 0
   enemies: []
-  enemySelected: {fileID: 0}
-  enemyDied: 0
-  spawned: 0
-  isDagon: 0
+  enemiesInGame: 0
 --- !u!114 &2035770752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7253,6 +7243,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6f5f3b7ced1f040b648e156b03b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueGhostFinishedTurn: 0
+--- !u!114 &2035770753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035770747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8f807b40131844bbb838e2a51ac9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - BlueGhost
+  - Enemy
+  whoIsFirst: 
+  enemySelected: {fileID: 0}
+  playerHeroPlayed: 0
+  playerEnemyPlayed: 0
+  turnSequenceDone: 0
 --- !u!1 &2037349392
 GameObject:
   m_ObjectHideFlags: 0

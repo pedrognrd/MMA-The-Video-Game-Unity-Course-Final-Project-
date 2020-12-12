@@ -40,6 +40,5 @@ public abstract class CombatSkills : MonoBehaviour
         canThrow = true;
         canShoot = true;
     }
-
     public abstract void Attack();
 }

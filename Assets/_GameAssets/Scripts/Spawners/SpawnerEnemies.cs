@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerEnemies : MonoBehaviour
 {
-    // THIS CLASS INSTANTIATE DEEPONES
+    // THIS CLASS INSTANTIATE ENEMIES AND SELECT ONE OF THEM AFTER FINISH SPAWNING
     private GameObject prefabEnemy;
     [SerializeField]
     private GameObject enemyToSpawn;
@@ -13,7 +13,7 @@ public class SpawnerEnemies : MonoBehaviour
     public int spawning;
     private int enemiesCreated = 0;
 
-    public void SpawnDeepOnes(int number)
+    public void SpawnEnemies(int number)
     {
         enemiesCreated = 0;
         spawning = number;
@@ -28,10 +28,12 @@ public class SpawnerEnemies : MonoBehaviour
         if (enemiesCreated >= spawning)
         {
             CancelInvoke();
-            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().SpawningWaves(1);
-            //GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().enemyDied = false;
-            GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().spawned = true;
-            
+            //GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().SpawningWaves(1);
+            GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame = enemiesCreated;
+            //GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().spawned = true;
+            // TODO EN GAMEMANAGER CONTROLAR QUE ESTAMOS EN SECUENCIA DE COMBATE
+            // Start new combat sequence
+            GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().turnSequenceDone = false;
         }
     }
 }

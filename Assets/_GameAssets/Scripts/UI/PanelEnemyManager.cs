@@ -47,6 +47,7 @@ public class PanelEnemyManager : MonoBehaviour
     }
     public void UpdateEnemyPanel(GameObject hitName)
     {
+        print("en UpdateEnemyPanel");
         // Loading enemySelected data received into PanelEnemy
         textName = GameObject.Find("EnemyName").GetComponent<Text>();
         textName.text = hitName.GetComponent<StatisticsCharacter>().characterName;

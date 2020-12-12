@@ -5,16 +5,16 @@ using UnityEngine;
 public class EnemySelectedManager : MonoBehaviour
 {
     // THIS CLASS CONTROLS THE SELECTED ENEMY
-    GameObject panelEnemyManager;
-    GameObject blueGhost;
-    GameObject enemySelected;
+    private GameObject panelEnemyManager;
+    private GameObject blueGhost;
+    public GameObject enemySelected;
     public string[] enemyAttacks = new string[] { "Melee", "Range" };
     public string attack;
 
     public void chooseAttack() 
     {
         attack = enemyAttacks[Random.Range(0, 1)];
-        StartCoroutine(EnemyAttack(4));
+        StartCoroutine(EnemyAttack(2));
     }
 
     IEnumerator EnemyAttack(float time)
@@ -46,8 +46,35 @@ public class EnemySelectedManager : MonoBehaviour
                 enemySelected.GetComponent<DagonWeaponRange1>().Attack();
             }
         }
+        // If Blue Ghost was the first to play, the turn sequence is finished
+        if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoIsFirst == "BlueGhost")
+        {
+            print("Disabling Blue Ghost buttons panel");
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
+            print("final de turno");
+            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+        }
+        else 
+        {
+            print("Enabling Blue Ghost buttons panel");
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
+            print("Waiting till Blue Ghost plays its turn");
+        }
+    }
 
-        GetComponent<GameManager>().playerEnemyActionDone = true;
+    public void Enemydied()
+    {
+        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame > 0)
+        {
+            print("Starting new turn sequence");
+            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+            GetComponent<TurnSequenceManager>().turnSequenceDone = false;
+        }
+        if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame == 0)
+        {
+            print("Combat Sequence Finished ");
+            GetComponent<TurnSequenceManager>().turnSequenceDone = true;
+        }
     }
 
     public void EnemySelected(GameObject enemySend)

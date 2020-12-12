@@ -62,7 +62,8 @@ public class BlueGhostAttackMelee1 : CombatSkills
             // The attack is a failed, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
         }
-        GameObject.Find("GameManager").GetComponent<GameManager>().playerHeroActionDone = true;
+        //GameObject.Find("GameManager").GetComponent<GameManager>().playerHeroActionDone = true;
+        GameObject.Find("GameManager").GetComponent<CharacterTurnManager>().blueGhostFinishedTurn = true;
     }
 
     private void InflictDamage()

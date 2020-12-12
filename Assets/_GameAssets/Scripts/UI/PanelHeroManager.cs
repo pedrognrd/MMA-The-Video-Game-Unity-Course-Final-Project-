@@ -44,7 +44,6 @@ public class PanelHeroManager : MonoBehaviour
 
     public void DisableHUD()
     {
-        print("en DisableHUD del hero");
         attackMelee1.interactable = false;
         attackMelee2.interactable = false;
         attackRange1.interactable = false;

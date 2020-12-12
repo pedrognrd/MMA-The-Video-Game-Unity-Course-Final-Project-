@@ -78,7 +78,9 @@ public abstract class StatisticsCharacter : MonoBehaviour
             }
             else 
             {
-                GameObject.Find("GameManager").GetComponent<SpawendEnemiesDetector>().enemyDied = true;
+                // Decrease number of enemies in game and its counter
+                GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame--;
+                GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().Enemydied();
                 Destroy(gameObject);
             }
         }

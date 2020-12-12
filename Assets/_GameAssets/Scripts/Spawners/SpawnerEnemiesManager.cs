@@ -24,7 +24,7 @@ public class SpawnerEnemiesManager : MonoBehaviour
             if (distanceToPlayer < 14)
             {
                 //GameObject.Find("GameManager").GetComponent<GameManager>().panelEnemy.SetActive(true);
-                GetComponent<SpawnerEnemies>().SpawnDeepOnes(spawnNumber);
+                GetComponent<SpawnerEnemies>().SpawnEnemies(spawnNumber);
                 spawning = false;
             }
         }

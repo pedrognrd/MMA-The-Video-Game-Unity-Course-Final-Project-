@@ -84,6 +84,6 @@ public class DagonWeaponRange1 : CombatSkills
     private void InflictDamage()
     {
         spawnNumber = Random.Range(minEnemies, maxEnemies);
-        GameObject.Find("DagonSpawner").GetComponent<SpawnerEnemies>().SpawnDeepOnes(spawnNumber);
+        GameObject.Find("DagonSpawner").GetComponent<SpawnerEnemies>().SpawnEnemies(spawnNumber);
     }
 }

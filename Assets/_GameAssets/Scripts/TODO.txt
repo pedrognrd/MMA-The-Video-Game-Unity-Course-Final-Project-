@@ -7,25 +7,12 @@
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
 
-- Turn order:
-	- Disable hero buttons DONE
-	- Update PanelEnemy according Enemy Spawned selected DONE
-	- Create turn sequence
-		- Text: New turn DONE 
-		- Select randomly who starts the turn DONE
-		    - Clean panel texts of the second player DONE
-			- Enable hero buttons DONE
-		- Play actions of first to play (player or each enemy) DONE
-		    - Select action/s DONE
-		    - Execute action/s DONE
-			- Disable hero buttons (if first) DONE
-		- Play actions of second to play (player or each enemy) 
-		    - Select action/s DONE
-		    - Execute action/s DONE
-			- Disable hero buttons (if first)
-		- Turn counter ++ DONE
-		- If both had played --> New Turn
-			- counter = 0 when all spawned enemies are death
+- Turn Sequence
+	- If there are more enemies
+		- Turn counter ++
+        - New Turn Sequence
+    - If there are no more enemies
+		- Continue Walking
 
 - Update threat level
 - Update Arkham threat level
@@ -72,6 +59,30 @@ PROBAR : yourButton.interactable = false;
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Turn Sequence
+	- Choose player
+		- If Blue Ghost First
+            - Blue Ghost Turn
+			- Choose Blue Ghost action
+		        - Select enemy
+		            - Play Blue Ghost action
+		        - Enemy Turn
+		            - Select enemy
+		            - Choose Random Enemy action
+		            - Play Random Enemy action
+		        - End turn sequence
+            
+		- If Enemy First
+			- Enemy Turn
+		        - Select enemy
+		            - Choose Random Enemy action
+		            - Play Random Enemy action
+		        - Blue Ghost Turn
+		            - Choose Blue Ghost action
+		            - Select enemy
+		            - Play Blue Ghost action
+		        - End turn sequence
+
 - Spawning wave of enemies
 	- Controlling ammount of enemies
 	- Spawn them
