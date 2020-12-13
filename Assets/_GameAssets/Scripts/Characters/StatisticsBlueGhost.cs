@@ -26,7 +26,7 @@ public class StatisticsBlueGhost : StatisticsCharacter
         dodge = dexterity * 2;
         hitPointsMax = (constitution + size)*3;
         hitPoints = hitPointsMax;
-        hitPoints = 10;
+        hitPoints = 800;
         sanityMax = power * 5;
         sanity = sanityMax;
     }

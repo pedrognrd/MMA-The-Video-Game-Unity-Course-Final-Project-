@@ -15,6 +15,9 @@ public class DeepOneWeaponRange1 : CombatSkills
     protected override void Awake()
     {
         base.Awake();
+        // Capturing Interactive GameObjects
+        textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
         canThrow = GetComponent<CombatSkills>().canThrow;
         LoadingStatistics();
         enemyCharacter = GameObject.Find("BlueGhost");

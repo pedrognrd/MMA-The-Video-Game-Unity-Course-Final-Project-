@@ -18,6 +18,9 @@ public class DagonWeaponRange1 : CombatSkills
     protected override void Awake()
     {
         base.Awake();
+        // Capturing Interactive GameObjects
+        textEvent1 = GameObject.Find("TextEvent1");
+        textEvent2 = GameObject.Find("TextEvent2");
         //canShoot = GetComponent<CombatSkills>().canShoot;
         //canShoot = true;
         LoadingStatistics();
@@ -51,6 +54,7 @@ public class DagonWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        Range1();
         if (canShoot)
         {
             // Using weapon, a message is shown in screen

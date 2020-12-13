@@ -21,7 +21,7 @@ public class SpawnerEnemiesManager : MonoBehaviour
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (spawning) 
         {
-            if (distanceToPlayer < 14)
+            if (distanceToPlayer < 18)
             {
                 GetComponent<SpawnerEnemies>().SpawnEnemies(spawnNumber);
                 spawning = false;

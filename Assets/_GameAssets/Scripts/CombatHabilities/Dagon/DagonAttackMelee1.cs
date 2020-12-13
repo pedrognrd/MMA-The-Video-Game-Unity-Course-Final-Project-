@@ -54,13 +54,19 @@ public class DagonAttackMelee1 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
+            // Play Melee1 animation
+            Melee1();
+            // Calculate the damage done
             InflictDamage();
             // Apply weapon effects if have it
         }
         else
         {
             // The attack is a failed, a message is shown in screen
+            Melee1();
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            // Enemy will play its defense animation
+            enemyCharacter.GetComponent<CombatSkills>().DefenseChoosing();
         }
     }
 

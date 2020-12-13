@@ -6,24 +6,18 @@
 
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
-- Move spawned enemies to see all in scene
-
-- Animations Blue Ghost:
-	- Random defense between the 2 available
-	- Damage to Blue Ghost starts very late
-
-- Animations Deep One:
-	- Reactions
-
-- Animation DeepOnes
-	- When Animation, all other enemies are at 0.8 size and move its y position higher to create perspective
-
-- IN COMBAT
-	- Disable player movement
 
 - Building Final HUD
 	- Show data when player hover attack buttons
+	- Select enemy when click
 	- Show data when enemy is selected by script or clicking
+
+- Move spawned enemies to see all in scene
+
+- Timing animations and text: CONTROL
+
+- IN COMBAT
+	- Disable player movement
 
 - Paint in white enemies when a enemy dies
 
@@ -72,6 +66,16 @@ PROBAR : yourButton.interactable = false;
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Animations Blue Ghost:
+	- Random defense between the 2 available
+	- Damage to Blue Ghost starts very late
+
+- Animations Deep One:
+	- Reactions
+
+- Animation DeepOnes
+	- When Animation, all other enemies are at 0.8 size and move its y position higher to create perspective
+
 - Building Final HUD
 	- Design done for player & enemies
 - In Deep Ones:
