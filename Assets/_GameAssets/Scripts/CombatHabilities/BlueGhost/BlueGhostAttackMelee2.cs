@@ -19,6 +19,7 @@ public class BlueGhostAttackMelee2 : CombatSkills
         LoadingStatistics();
     }
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class BlueGhostAttackMelee2 : CombatSkills
         }
     }
 
+    
     private void LoadingStatistics()
     {
         // Defining weapon statistics
@@ -46,6 +48,7 @@ public class BlueGhostAttackMelee2 : CombatSkills
 
     public override void Attack()
     {
+        Melee2();
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Prussian Kick");
         // A percentual roll is made

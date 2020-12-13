@@ -42,6 +42,7 @@ public class BlueGhostWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        Range1();
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Throwing Blue Hat");
         // A percentual roll is made

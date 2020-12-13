@@ -62,7 +62,7 @@ public class EnemySelectedManager : MonoBehaviour
                 enemySelected.GetComponent<DagonAttackMelee1>().Attack();
                 EvaluateAttack();
             }
-            else
+            if (attack == "Range")
             {
                 // TODO: Summoning spells
                 //enemySelected.GetComponent<DagonWeaponRange1>().Attack();
@@ -80,8 +80,6 @@ public class EnemySelectedManager : MonoBehaviour
             print("Disabling Blue Ghost buttons panel");
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
             print("final de turno");
-            //GetComponent<TurnSequenceManager>().turnSequenceDone = true;
-            //GetComponent<TurnSequenceManager>().FinishingTurn();
             StartCoroutine(EnemyFinished(2));
         }
         else

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 2939792269225093799}
   - component: {fileID: 2939792269225093796}
   - component: {fileID: 7590761418917655689}
+  - component: {fileID: 1741773420593641255}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -168,9 +169,28 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.26651168}
   serializedVersion: 2
-  m_Radius: 3.5425
+  m_Radius: 2.6381629
+--- !u!95 &1741773420593641255
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939792269225093802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac3e3453407a4d94b8cb24df61c92d54, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2939792270197512317
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3d52ff86ca8384e8ce49c15cdec3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   character: {fileID: 2939792270197512317}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -294,8 +315,10 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
-  textEvent1: {fileID: 0}
-  textEvent2: {fileID: 0}
+  defenseChoosing:
+  - Defense1
+  - Defense2
+  defenseChosen: 
   damageBonus: 0
 --- !u!114 &1954178438
 MonoBehaviour:
@@ -309,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc51c3201431b741bf7aef59cdbd410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   character: {fileID: 2939792270197512317}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -317,6 +341,10 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
+  defenseChoosing:
+  - Defense1
+  - Defense2
+  defenseChosen: 
   damageBonus: 0
 --- !u!114 &1274830216120626245
 MonoBehaviour:

@@ -11,8 +11,6 @@ public class DeepOneAttackMelee1 : CombatSkills
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
 
-    public GameObject textEvent1;
-    public GameObject textEvent2;
     public int damageBonus;
 
     protected override void Awake()
@@ -59,17 +57,23 @@ public class DeepOneAttackMelee1 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
+            // Play Melee1 animation
+            Melee1();
+            // Calculate the damage done
             InflictDamage();
             // Apply weapon effects if have it
         }
         else
         {
             // The attack is a failed, a message is shown in screen
+            Melee1();
             textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            // Enemy will play its defense animation
+            enemyCharacter.GetComponent<CombatSkills>().DefenseChoosing();
         }
     }
 
-    private void InflictDamage()
+     private void InflictDamage()
     {
         // There is damageBonus in Melee Skills
         damageBonus = GetComponent<StatisticsDeepOne>().damageBonus;

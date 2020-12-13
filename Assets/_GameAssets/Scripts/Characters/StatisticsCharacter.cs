@@ -72,19 +72,43 @@ public abstract class StatisticsCharacter : MonoBehaviour
         {
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
+
             if (gameObject.name == "BlueGhost")
             {
-                Destroy(gameObject);
+                print("BLUE GHOST MUERE");
+                GetComponent<CombatSkills>().Died();
+                StartCoroutine(DestroyHeroGameObject(2));
             }
-            else 
+            else
             {
                 // Decrease number of enemies in game and its counter
-                GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame--;
-                GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
-                GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().Enemydied();
-                Destroy(gameObject);
+                GetComponent<CombatSkills>().Died();
+                StartCoroutine(DestroyEnemyGameObject(1));
             }
         }
+        else 
+        {
+            // Play Damage enemy animation
+            GetComponent<CombatSkills>().Damage();
+        }
+
+    }
+
+    IEnumerator DestroyHeroGameObject(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        Destroy(gameObject);
+    }
+
+    IEnumerator DestroyEnemyGameObject(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        Destroy(gameObject);
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame--;
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
+        GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().Enemydied();
     }
 
     public void characterClicked()

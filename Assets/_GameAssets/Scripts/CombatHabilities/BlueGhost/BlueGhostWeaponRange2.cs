@@ -44,6 +44,7 @@ public class BlueGhostWeaponRange2 : CombatSkills
 
     public override void Attack()
     {
+        Range2();
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // Substract ammo

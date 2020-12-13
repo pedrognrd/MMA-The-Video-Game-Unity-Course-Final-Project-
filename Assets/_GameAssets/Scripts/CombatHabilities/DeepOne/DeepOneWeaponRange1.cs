@@ -47,6 +47,7 @@ public class DeepOneWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        Range1();
         if (canThrow)
         {
             // Using weapon, a message is shown in screen

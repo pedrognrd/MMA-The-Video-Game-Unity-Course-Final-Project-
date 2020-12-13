@@ -31,5 +31,6 @@ public class BlueGhostTurnManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
         GetComponent<TurnSequenceManager>().FinishingTurn();
+        //GameObject.Find("BlueGhost").GetComponent<BlueGhostAttackMelee1>().animator.SetBool("Fist", false);
     }
 }
