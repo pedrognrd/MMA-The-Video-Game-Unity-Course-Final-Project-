@@ -6,6 +6,9 @@
 
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
+- IN COMBAT
+	- Disable player movement
+
 - In Deep Ones:
 	- if !canThrow --> Select always melee attack
 - Paint in white enemies when a enemy dies

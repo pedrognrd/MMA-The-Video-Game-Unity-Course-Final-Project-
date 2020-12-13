@@ -66,8 +66,8 @@ public class PanelHeroManager : MonoBehaviour
 
     public void LoadingStatistics()
     {
-        textName = GameObject.Find("HeroName").GetComponent<Text>();
-        textName.text = GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().characterName;
+        //textName = GameObject.Find("HeroName").GetComponent<Text>();
+        //textName.text = GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().characterName;
         textConcept = GameObject.Find("HeroConcept").GetComponent<Text>();
         textConcept.text = GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().characterConcept;
 

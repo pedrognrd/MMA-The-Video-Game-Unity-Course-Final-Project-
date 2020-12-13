@@ -70,7 +70,7 @@ public class DeepOneWeaponRange1 : CombatSkills
         else 
         {
             // TODO: Delete when random attack enemy will be done
-            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("No Sleeping Stars left!");
+            //textEvent1.GetComponent<PanelTextEventManager>().UpdateText("No Sleeping Stars left!");
         }
     }
 

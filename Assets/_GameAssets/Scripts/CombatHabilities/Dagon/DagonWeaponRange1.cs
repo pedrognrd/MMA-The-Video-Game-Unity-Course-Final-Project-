@@ -57,6 +57,7 @@ public class DagonWeaponRange1 : CombatSkills
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Children, come to me!");
             // A percentual roll is made
             attackRoll = Random.Range(1, 100);
+            attackRoll = 1;
 
             // If the percentual roll is lower than impact value, the attack is a success
             if (attackRoll <= impact)
@@ -82,6 +83,7 @@ public class DagonWeaponRange1 : CombatSkills
     private void InflictDamage()
     {
         spawnNumber = Random.Range(minEnemies, maxEnemies);
+        print("spawning enemies");
         GameObject.Find("DagonSpawner").GetComponent<SpawnerEnemies>().SpawnEnemies(spawnNumber);
     }
 }

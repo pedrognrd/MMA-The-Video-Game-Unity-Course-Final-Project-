@@ -31,32 +31,49 @@ public class EnemySelectedManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
-        if (enemySelected.layer == 8)
+        if (enemySelected.layer == 8 && !enemySelected.GetComponent<DeepOneWeaponRange1>().canThrow)
         {
             attack = "Range";
+        }
+        if (enemySelected.layer == 9 && !enemySelected.GetComponent<DagonWeaponRange1>().canShoot)
+        {
+            attack = "Range";
+        }
+        if (enemySelected.layer == 8 && enemySelected.GetComponent<DeepOneWeaponRange1>().canThrow)
+        {
             if (attack == "Melee")
             {
                 print("attack melee" + attack);
                 enemySelected.GetComponent<DeepOneAttackMelee1>().Attack();
+                EvaluateAttack();
             }
             if (attack == "Range")
             {
-                print("attack range " + attack);
                 enemySelected.GetComponent<DeepOneWeaponRange1>().Attack();
+                EvaluateAttack();
+                print("attack range " + attack);
             }
         }
 
-        if (enemySelected.layer == 9)
+        if (enemySelected.layer == 9 && enemySelected.GetComponent<DagonWeaponRange1>().canShoot)
         {
             if (attack == "Melee")
             {
                 enemySelected.GetComponent<DagonAttackMelee1>().Attack();
+                EvaluateAttack();
             }
             else
             {
-                enemySelected.GetComponent<DagonWeaponRange1>().Attack();
+                // TODO: Summoning spells
+                //enemySelected.GetComponent<DagonWeaponRange1>().Attack();
+                enemySelected.GetComponent<DagonAttackMelee1>().Attack();
+                EvaluateAttack();
             }
         }
+    }
+
+    private void EvaluateAttack()
+    {
         // If Blue Ghost was the first to play, the turn sequence is finished
         if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoIsPlaying == "BlueGhost")
         {
@@ -67,7 +84,7 @@ public class EnemySelectedManager : MonoBehaviour
             //GetComponent<TurnSequenceManager>().FinishingTurn();
             StartCoroutine(EnemyFinished(2));
         }
-        else 
+        else
         {
             print("Enabling Blue Ghost buttons panel");
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
