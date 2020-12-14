@@ -22,7 +22,6 @@ public class SpawnedEnemiesDetector : MonoBehaviour
     public void DetectEnemies()
     {
         // Array that detects the active enemies in scene
-        print("Enemies in game " + enemiesInGame);
         // Detect all enemies
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         // All enemies recover its initial color
@@ -41,12 +40,12 @@ public class SpawnedEnemiesDetector : MonoBehaviour
 
     public void SelectEnemy()
     {
-        print("en SelectEnemy");
+        print("ESTOY EN SelectEnemy");
         // Selecting an enemy in enemies array to display in Enemy Canvas Panel
         int index = Random.Range(0, enemies.Length);
         enemySelected = enemies[index];
         // Turning blue to highlight the chosen enemy
-        enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        //enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         // Showing enemySelected data in PanelEnemy
         GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
         // By default, BlueGhost will attack to the enemySelected

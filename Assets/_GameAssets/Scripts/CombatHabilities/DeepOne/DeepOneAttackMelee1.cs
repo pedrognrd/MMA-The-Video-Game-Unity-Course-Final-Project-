@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DeepOneAttackMelee1 : CombatSkills
 {
-
-    // TODO: Attack Animation
-    // TODO: If enemy dies, make animation
     // TODO: Update HUD
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
@@ -50,6 +47,10 @@ public class DeepOneAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
+        // Turning blue to highlight the chosen enemy
+        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        // Play Melee1 animation
+        GetComponent<CharacterAnimations>().Melee1();
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Claw of R'lyeh!");
         // A percentual roll is made
@@ -57,23 +58,27 @@ public class DeepOneAttackMelee1 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
-            // Play Melee1 animation
-            Melee1();
             // Calculate the damage done
             InflictDamage();
+            // Apply a delay for the enemy damage animation
+            Invoke("InvokeDamage", 0.5f);
             // Apply weapon effects if have it
         }
         else
         {
-            // The attack is a failed, a message is shown in screen
-            Melee1();
             textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
             // Enemy will play its defense animation
-            enemyCharacter.GetComponent<CombatSkills>().DefenseChoosing();
+            enemyCharacter.GetComponent<CharacterAnimations>().DefenseChoosing();
         }
     }
 
-     private void InflictDamage()
+    private void InvokeDamage()
+    {
+        // Play Damage enemy animation
+        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
+    }
+
+    private void InflictDamage()
     {
         // There is damageBonus in Melee Skills
         damageBonus = GetComponent<StatisticsDeepOne>().damageBonus;

@@ -50,7 +50,10 @@ public class DeepOneWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
-        Range1();
+        // Turning blue to highlight the chosen enemy
+        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        // Play Range1 animation
+        GetComponent<CharacterAnimations>().Range1();
         if (canThrow)
         {
             // Using weapon, a message is shown in screen
@@ -60,13 +63,18 @@ public class DeepOneWeaponRange1 : CombatSkills
             // If the percentual roll is lower than impact value, the attack is a success
             if (attackRoll <= impact)
             {
+                // Calculate the damage done
                 InflictDamage();
+                // Apply a delay for the enemy damage animation
+                Invoke("InvokeDamage", 1.0f);
                 // TODO: Apply weapon effects if have it
             }
             if (attackRoll > impact)
             {
                 // Using weapon, a message is shown in screen
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Sleeping Star fails!");
+                // Enemy will play its defense animation
+                enemyCharacter.GetComponent<CharacterAnimations>().DefenseChoosing();
             }
             // DeepOne will no longer be able to throw Spear
             canThrow = false;
@@ -76,6 +84,14 @@ public class DeepOneWeaponRange1 : CombatSkills
             // TODO: Delete when random attack enemy will be done
             //textEvent1.GetComponent<PanelTextEventManager>().UpdateText("No Sleeping Stars left!");
         }
+        // All enemies recover its original color
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
+    }
+
+    private void InvokeDamage()
+    {
+        // Play Damage enemy animation
+        GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

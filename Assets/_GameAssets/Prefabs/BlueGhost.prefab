@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8804640935881050354}
   - component: {fileID: 8804640935881050359}
   - component: {fileID: 8804640935881050365}
+  - component: {fileID: 3098532981511623481}
   - component: {fileID: 8804640935881050353}
   - component: {fileID: 8804640935881050358}
   - component: {fileID: 8078344033512800891}
@@ -82,6 +83,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 400
+--- !u!114 &3098532981511623481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804640935881050364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc285fb9bfa04244dada683913e4f559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2930256457515814288}
+  defenseChoosing:
+  - Defense1
+  - Defense2
+  defenseChosen: 
 --- !u!114 &8804640935881050353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5ccaa88a6d2794bab064c2d262030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 8804640935881050364}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -172,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe9e7aec306fae4e87441791b45d064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 8804640935881050364}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -194,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df9769e9e3113a4f9b3b8ffbc2f1101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 8804640935881050364}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -215,7 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7de0542e1b4d3f44aa5856ff1ad31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 8804640935881050364}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}

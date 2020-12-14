@@ -46,29 +46,42 @@ public class BlueGhostAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
-        // Using weapon, a message is shown in screen
+        //InvokeMelee1();
+        // Apply a delay for the enemy damage animation
+        Invoke("InvokeMelee1", 0.5f);
+        // A message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Indigo Fist");
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
-            // Play Melee1 animation
-            Melee1();
             // Calculate the damage done
             InflictDamage();
+            // Apply a delay for the enemy damage animation
+            Invoke("InvokeDamage", 0.0f);
             // Apply weapon effects if have it
         }
         else
         {
             // The attack is a failed, a message is shown in screen
-            Melee1();
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
             // Enemy will play its defense animation
-            enemyCharacter.GetComponent<CombatSkills>().Defense();
-
+            enemyCharacter.GetComponent<CharacterAnimations>().Defense();
         }
         GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
+    }
+
+    private void InvokeMelee1()
+    {
+        // Play Melee1 animation
+        GetComponent<CharacterAnimations>().Melee1();
+    }
+
+    private void InvokeDamage()
+    {
+        // Play Damage enemy animation
+        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

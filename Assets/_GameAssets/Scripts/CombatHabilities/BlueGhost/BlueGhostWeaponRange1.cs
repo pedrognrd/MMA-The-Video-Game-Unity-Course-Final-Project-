@@ -42,7 +42,8 @@ public class BlueGhostWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
-        Range1();
+        // Play Range1 animation
+        GetComponent<CharacterAnimations>().Range1();
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Throwing Blue Hat");
         // A percentual roll is made
@@ -50,7 +51,12 @@ public class BlueGhostWeaponRange1 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
+            // Calculate the damage done
             InflictDamage();
+            // Play Damage enemy animation
+            //enemyCharacter.GetComponent<CharacterAnimations>().Damage();
+            // Apply a delay for the enemy damage animation
+            Invoke("InvokeDamage", 1.0f);
             // Apply weapon effects if have it
             // Substract ammo if have it
         }
@@ -58,8 +64,16 @@ public class BlueGhostWeaponRange1 : CombatSkills
         {
             // The attack is a failed, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            // Enemy will play its defense animation
+            enemyCharacter.GetComponent<CharacterAnimations>().Defense();
         }
         GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
+    }
+
+    private void InvokeDamage()
+    {
+        // Play Damage enemy animation
+        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

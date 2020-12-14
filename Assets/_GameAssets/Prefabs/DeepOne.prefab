@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820528700670663527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 0, z: 0}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2939792270197512312}
@@ -70,12 +70,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2939792269225093797}
   - component: {fileID: 2939792269225093799}
-  - component: {fileID: 2939792269225093796}
   - component: {fileID: 7590761418917655689}
   - component: {fileID: 1741773420593641255}
   m_Layer: 8
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: EnemySpawned
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,18 +143,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2939792269225093796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2939792269225093802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6365dad54706df4468eb2ce724a540ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &7590761418917655689
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -202,6 +189,7 @@ GameObject:
   - component: {fileID: 2939792270197512312}
   - component: {fileID: 2939792270197512313}
   - component: {fileID: 2939792270197512316}
+  - component: {fileID: 1930846614945652855}
   - component: {fileID: 1954178439}
   - component: {fileID: 1954178438}
   - component: {fileID: 1274830216120626245}
@@ -294,6 +282,23 @@ MonoBehaviour:
   stun: 0
   textEvent: {fileID: 0}
   sanityLoss: 0
+--- !u!114 &1930846614945652855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939792270197512317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc285fb9bfa04244dada683913e4f559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1741773420593641255}
+  defenseChoosing:
+  - Defense1
+  - Defense2
+  defenseChosen: 
 --- !u!114 &1954178439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3d52ff86ca8384e8ce49c15cdec3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 2939792270197512317}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -315,10 +319,6 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
-  defenseChoosing:
-  - Defense1
-  - Defense2
-  defenseChosen: 
   damageBonus: 0
 --- !u!114 &1954178438
 MonoBehaviour:
@@ -332,7 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc51c3201431b741bf7aef59cdbd410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 2939792270197512317}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -341,10 +340,6 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
-  defenseChoosing:
-  - Defense1
-  - Defense2
-  defenseChosen: 
   damageBonus: 0
 --- !u!114 &1274830216120626245
 MonoBehaviour:
@@ -359,9 +354,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: {fileID: 6614239754773693100}
-  endPos: {fileID: 7592059677325386893}
+  endPos: {fileID: 8631789855818477696}
   objectToMove: {fileID: 2939792269225093802}
-  rotate: 0
+  moved: 0
   speed: 2
 --- !u!1 &6388848825154946734
 GameObject:

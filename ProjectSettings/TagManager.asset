@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - ButtonEnemy
   - ButtonHero
+  - EnemySpawned
   layers:
   - Default
   - TransparentFX

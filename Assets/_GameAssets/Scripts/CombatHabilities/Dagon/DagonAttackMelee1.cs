@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DagonAttackMelee1 : CombatSkills
 {
-
-    // TODO: Attack Animation
-    // TODO: If enemy dies, make animation
     // TODO: Update HUD
     // TODO: Update threat level
     // TDOO: Update Arkham threat level
@@ -47,6 +44,10 @@ public class DagonAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
+        // Play Melee1 animation
+        GetComponent<CharacterAnimations>().Melee1();
+        // Apply a delay for the enemy damage animation
+        //Invoke("InvokeMelee1", 0.5f);
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Claw of Dagon!");
         // A percentual roll is made
@@ -54,20 +55,26 @@ public class DagonAttackMelee1 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
-            // Play Melee1 animation
-            Melee1();
+            
             // Calculate the damage done
             InflictDamage();
+            // Apply a delay for the enemy damage animation
+            Invoke("InvokeDamage", 0.5f);
             // Apply weapon effects if have it
         }
         else
         {
             // The attack is a failed, a message is shown in screen
-            Melee1();
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
             // Enemy will play its defense animation
-            enemyCharacter.GetComponent<CombatSkills>().DefenseChoosing();
+            enemyCharacter.GetComponent<CharacterAnimations>().DefenseChoosing();
         }
+    }
+
+    private void InvokeDamage()
+    {
+        // Play Damage enemy animation
+        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

@@ -7,21 +7,20 @@ public class BlueGhostTurnManager : MonoBehaviour
     // Update is called once per frame
     void Awake()
     {
-        print("Disabling Blue Ghost buttons panel");
+        // Disabling Blue Ghost buttons panel
         GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
     }
 
     public void BlueGhostAttacked()
     {
         // If Blue Ghost was the first to play, enemy can play
-        if (GetComponent<TurnSequenceManager>().whoIsPlaying == "BlueGhost")
+        if (GetComponent<TurnSequenceManager>().whoPlaysFirst == "BlueGhost")
         {
             GetComponent<TurnSequenceManager>().EnemyPlays();
         }
         else
         {
-            print("Evaluate if there are more enemies in game");
-            //GetComponent<TurnSequenceManager>().FinishingTurn();
+            // Evaluate if there are more enemies in game
             StartCoroutine(BlueGhostFinished(2));
         }
     }
@@ -31,6 +30,5 @@ public class BlueGhostTurnManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
         GetComponent<TurnSequenceManager>().FinishingTurn();
-        //GameObject.Find("BlueGhost").GetComponent<BlueGhostAttackMelee1>().animator.SetBool("Fist", false);
     }
 }

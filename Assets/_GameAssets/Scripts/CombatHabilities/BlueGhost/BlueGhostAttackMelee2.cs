@@ -48,7 +48,10 @@ public class BlueGhostAttackMelee2 : CombatSkills
 
     public override void Attack()
     {
-        Melee2();
+        // Play Melee2 animation
+        //GetComponent<CharacterAnimations>().Melee2();
+        // Apply a delay for the enemy damage animation
+        Invoke("InvokeMelee2", 0.0f);
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Prussian Kick");
         // A percentual roll is made
@@ -56,7 +59,10 @@ public class BlueGhostAttackMelee2 : CombatSkills
         // If the percentual roll is lower than impact value, the attack is a success
         if (attackRoll <= impact)
         {
+            // Calculate the damage done
             InflictDamage();
+            // Play Damage enemy animation
+            enemyCharacter.GetComponent<CharacterAnimations>().Damage();
             // Apply weapon effects if have it
             // Substract ammo if have it
         }
@@ -64,8 +70,16 @@ public class BlueGhostAttackMelee2 : CombatSkills
         {
             // The attack is a failed, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            // Enemy will play its defense animation
+            enemyCharacter.GetComponent<CharacterAnimations>().Defense();
         }
         GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
+    }
+
+    private void InvokeMelee2()
+    {
+        // Play Melee2 animation
+        GetComponent<CharacterAnimations>().Melee2();
     }
 
     private void InflictDamage()

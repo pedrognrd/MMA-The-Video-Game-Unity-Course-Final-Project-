@@ -44,7 +44,8 @@ public class BlueGhostWeaponRange2 : CombatSkills
 
     public override void Attack()
     {
-        Range2();
+        // Play Range2 animation
+        GetComponent<CharacterAnimations>().Range2();
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // Substract ammo
@@ -57,7 +58,10 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 // Using weapon, a message is shown in screen
                 textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Shooting Blue Colt");
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left" + ammo);
+                // Calculate the damage done
                 InflictDamage();
+                // Play Damage enemy animation
+                enemyCharacter.GetComponent<CharacterAnimations>().Damage();
                 // TODO: Apply weapon effects if have it
             }
             else
@@ -82,6 +86,8 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 // Using weapon, a message is shown in screen
                 textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Colt Failed!");
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left:" + ammo);
+                // Enemy will play its defense animation
+                enemyCharacter.GetComponent<CharacterAnimations>().Defense();
             }
             else
             {

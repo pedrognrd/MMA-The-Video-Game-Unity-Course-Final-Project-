@@ -23,12 +23,6 @@ public class PanelEnemyManager : MonoBehaviour
     public Button attackRange1;
     public Button attackRange2;
 
-    private void Start()
-    {
-        // Disable all Enemy buttons
-        //DisableHUD();
-    }
-
     public void EnableHUD()
     {
         attackMelee1.interactable = true;
@@ -39,7 +33,7 @@ public class PanelEnemyManager : MonoBehaviour
 
     public void DisableHUD()
     {
-        print("en DisableHUD del enemy");
+        // Disable enemy panel");
         attackMelee1.interactable = false;
         attackMelee2.interactable = false;
         attackRange1.interactable = false;
@@ -47,8 +41,6 @@ public class PanelEnemyManager : MonoBehaviour
     }
     public void UpdateEnemyPanel(GameObject hitName)
     {
-        print("en UpdateEnemyPanel");
-        // Loading enemySelected data received into PanelEnemy
         textName = GameObject.Find("EnemyName").GetComponent<Text>();
         textName.text = hitName.GetComponent<StatisticsCharacter>().characterName;
         textConcept = GameObject.Find("EnemyConcept").GetComponent<Text>();

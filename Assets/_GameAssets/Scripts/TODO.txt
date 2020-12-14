@@ -7,14 +7,24 @@
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
 
-- Building Final HUD
-	- Show data when player hover attack buttons
-	- Select enemy when click
-	- Show data when enemy is selected by script or clicking
+- Display enemy avatar in HUD when selected
+- Clean enemy avatar in HUD when finishing turn
 
-- Move spawned enemies to see all in scene
+- Building Final HUD
+	- Turn playing HUD
+		- Displays who is playing
+		- Displays number of turn
+
+- Show data when player hover attack buttons
+	
+	
 
 - Timing animations and text: CONTROL
+	- NO All animations and interactions are corrected
+
+- Instantiate flying points with delay
+
+
 
 - IN COMBAT
 	- Disable player movement
@@ -66,6 +76,16 @@ PROBAR : yourButton.interactable = false;
 ------------- TODO --------------
 
 ------------- DONE --------------
+- Selecting enemy
+	- When enemy is selected by clicking
+		- Show him in blue till the end of Blue Ghost Attack
+		- Paint in "white" the rest of enemies
+	- When enemy is selected by script
+		- show him in blue till the end of his attack
+		- Paint in "white" the rest of enemies
+
+- Move spawned enemies to see all in scene
+
 - Animations Blue Ghost:
 	- Random defense between the 2 available
 	- Damage to Blue Ghost starts very late

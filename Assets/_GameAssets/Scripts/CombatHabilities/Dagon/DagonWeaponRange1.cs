@@ -54,7 +54,8 @@ public class DagonWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
-        Range1();
+        // Play Range1 animation
+        GetComponent<CharacterAnimations>().Range1();
         if (canShoot)
         {
             // Using weapon, a message is shown in screen
@@ -66,7 +67,10 @@ public class DagonWeaponRange1 : CombatSkills
             // If the percentual roll is lower than impact value, the attack is a success
             if (attackRoll <= impact)
             {
+                // Calculate the damage done
                 InflictDamage();
+                // Play Damage enemy animation
+                GetComponent<CharacterAnimations>().Damage();
                 // TODO: Apply weapon effects if have it
             }
             if (attackRoll > impact)

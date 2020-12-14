@@ -23,6 +23,7 @@ public class EnemySelectedManager : MonoBehaviour
 
     public void chooseAttack() 
     {
+        // Choose enemy attack
         attack = enemyAttacks[Random.Range(0, 1)];
         StartCoroutine(EnemyAttack(2));
     }
@@ -33,17 +34,18 @@ public class EnemySelectedManager : MonoBehaviour
         // Code to execute after the delay
         if (enemySelected.layer == 8 && !enemySelected.GetComponent<DeepOneWeaponRange1>().canThrow)
         {
+            // Enemy can throw its weapon only once, If done, enemy will do a Range attack
             attack = "Range";
         }
         if (enemySelected.layer == 9 && !enemySelected.GetComponent<DagonWeaponRange1>().canShoot)
         {
+            // Enemy can shoot its weapon only once, If done, enemy will do a Range attack
             attack = "Range";
         }
         if (enemySelected.layer == 8 && enemySelected.GetComponent<DeepOneWeaponRange1>().canThrow)
         {
             if (attack == "Melee")
             {
-                print("attack melee" + attack);
                 enemySelected.GetComponent<DeepOneAttackMelee1>().Attack();
                 EvaluateAttack();
             }
@@ -51,10 +53,8 @@ public class EnemySelectedManager : MonoBehaviour
             {
                 enemySelected.GetComponent<DeepOneWeaponRange1>().Attack();
                 EvaluateAttack();
-                print("attack range " + attack);
             }
         }
-
         if (enemySelected.layer == 9 && enemySelected.GetComponent<DagonWeaponRange1>().canShoot)
         {
             if (attack == "Melee")
@@ -64,8 +64,7 @@ public class EnemySelectedManager : MonoBehaviour
             }
             if (attack == "Range")
             {
-                // TODO: Summoning spells
-                //enemySelected.GetComponent<DagonWeaponRange1>().Attack();
+                // TODO: Summoning spells. Enemy will be available to summoning each 5 turns
                 enemySelected.GetComponent<DagonAttackMelee1>().Attack();
                 EvaluateAttack();
             }
@@ -75,17 +74,19 @@ public class EnemySelectedManager : MonoBehaviour
     private void EvaluateAttack()
     {
         // If Blue Ghost was the first to play, the turn sequence is finished
-        if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoIsPlaying == "BlueGhost")
+        if (GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().whoPlaysFirst == "BlueGhost")
         {
-            print("Disabling Blue Ghost buttons panel");
+            // Disabling Blue Ghost buttons panel
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
-            print("final de turno");
+            // End of turn
             StartCoroutine(EnemyFinished(2));
         }
         else
         {
-            print("Enabling Blue Ghost buttons panel");
-            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
+            // Disabling Blue Ghost buttons panel
+            GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
+            // Enabling Blue Ghost buttons panel
+            //GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
             StartCoroutine(EnemyWaiting(2));
         }
     }
@@ -94,6 +95,8 @@ public class EnemySelectedManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
+        // All enemies recover its original color
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
         GetComponent<TurnSequenceManager>().FinishingTurn();
     }
 
@@ -101,12 +104,14 @@ public class EnemySelectedManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
+        // All enemies recover its original color
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Ghost, is your turn!");
     }
 
     public void Enemydied()
     {
-        print("Evaluate if there are more enemies in game");
+        // Evaluate if there are more enemies in game");
         GetComponent<TurnSequenceManager>().FinishingTurn();
     }
 

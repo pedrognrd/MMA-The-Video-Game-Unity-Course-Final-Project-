@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6540656980014148227}
   - component: {fileID: 6540656980014148226}
-  - component: {fileID: 6540656980014148225}
   - component: {fileID: 6540656980014148228}
   - component: {fileID: 6540656980014148224}
+  - component: {fileID: 3059600769180317077}
   - component: {fileID: 4298190508350251271}
   - component: {fileID: 8741079576185483921}
   m_Layer: 9
@@ -59,22 +59,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6540656980014148225
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6540656980014148223}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.2113647, y: -0.7580223}
-  serializedVersion: 2
-  m_Radius: 4.2534447
 --- !u!114 &6540656980014148228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +116,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingPointsPrefab: {fileID: 8510100965256446621, guid: d9ba7c1ca2fccdc48a45efa064ed5d0b,
     type: 3}
+--- !u!114 &3059600769180317077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540656980014148223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc285fb9bfa04244dada683913e4f559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1827900863684514821}
+  defenseChoosing:
+  - Defense1
+  - Defense2
+  defenseChosen: 
 --- !u!114 &4298190508350251271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c5728a143c1a3499a236a1cfdc419d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 6540656980014148223}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -153,10 +153,6 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
-  defenseChoosing:
-  - Defense1
-  - Defense2
-  defenseChosen: 
   damageBonus: 0
 --- !u!114 &8741079576185483921
 MonoBehaviour:
@@ -170,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128d9599b7049a468e02993021962d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   character: {fileID: 6540656980014148223}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -179,10 +174,6 @@ MonoBehaviour:
   panelHero: {fileID: 0}
   canThrow: 0
   canShoot: 0
-  defenseChoosing:
-  - Defense1
-  - Defense2
-  defenseChosen: 
   damageBonus: 0
   spawnNumber: 3
 --- !u!1 &6540656980201026574
@@ -195,11 +186,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6540656980201026575}
   - component: {fileID: 6540656980201026577}
-  - component: {fileID: 6540656980201026576}
+  - component: {fileID: 6064036245785223191}
   - component: {fileID: 1827900863684514821}
   m_Layer: 9
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: EnemySpawned
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,18 +259,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6540656980201026576
-MonoBehaviour:
+--- !u!58 &6064036245785223191
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6540656980201026574}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6365dad54706df4468eb2ce724a540ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 6.504674
 --- !u!95 &1827900863684514821
 Animator:
   serializedVersion: 3

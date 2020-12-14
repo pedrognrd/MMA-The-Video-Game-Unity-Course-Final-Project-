@@ -76,20 +76,20 @@ public abstract class StatisticsCharacter : MonoBehaviour
             if (gameObject.name == "BlueGhost")
             {
                 print("BLUE GHOST MUERE");
-                GetComponent<CombatSkills>().Died();
+                GetComponent<CharacterAnimations>().Died();
                 StartCoroutine(DestroyHeroGameObject(2));
             }
             else
             {
                 // Decrease number of enemies in game and its counter
-                GetComponent<CombatSkills>().Died();
+                GetComponent<CharacterAnimations>().Died();
                 StartCoroutine(DestroyEnemyGameObject(1));
             }
         }
         else 
         {
             // Play Damage enemy animation
-            GetComponent<CombatSkills>().Damage();
+            GetComponent<CharacterAnimations>().Damage();
         }
 
     }
@@ -137,11 +137,19 @@ public abstract class StatisticsCharacter : MonoBehaviour
             //Check if we hit anything
             if (hit)
             {
-                if (hit.collider.CompareTag("Enemy")) 
+                print(hit.collider.name);
+                // If click over a enemy spawned, its data will be display in HUD en selected in game
+                if (hit.collider.CompareTag("EnemySpawned"))
                 {
                     string hitName = hit.collider.name;
                     GameObject controlledUnit = hit.transform.gameObject;
                     gameManager.GetComponent<EnemySelectedManager>().EnemySelected(controlledUnit);
+                    // All enemies recover its original color
+                    GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
+                    // Turning blue to highlight the chosen enemy
+                    hit.collider.GetComponent<SpriteRenderer>().color = Color.blue;
+                    // Enabling Blue Ghost buttons panel
+                    GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
                 }
             }
         }
