@@ -7,6 +7,11 @@
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
 
+- Lights: 
+	- Make transparent the characters
+	- Lights for DeepOnes
+
+
 - Sound for each character
 
 - Display enemy avatar in HUD when selected

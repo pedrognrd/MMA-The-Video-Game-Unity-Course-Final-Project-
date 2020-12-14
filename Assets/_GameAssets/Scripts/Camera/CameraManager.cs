@@ -44,7 +44,7 @@ public class CameraManager : MonoBehaviour
     {
         if (Mathf.Abs(playerRigidbody.velocity.x) > offset)
         {
-            cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = m_ScreenYInitial + 0.08f;
+            cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = m_ScreenYInitial + 0.1f;
         } else
         {
             cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = m_ScreenYInitial;
