@@ -60,8 +60,6 @@ public class BlueGhostWeaponRange2 : CombatSkills
                 textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Ammo Left" + ammo);
                 // Calculate the damage done
                 InflictDamage();
-                // Play Damage enemy animation
-                enemyCharacter.GetComponent<CharacterAnimations>().Damage();
                 // TODO: Apply weapon effects if have it
             }
             else

@@ -69,8 +69,6 @@ public class DagonWeaponRange1 : CombatSkills
             {
                 // Calculate the damage done
                 InflictDamage();
-                // Play Damage enemy animation
-                GetComponent<CharacterAnimations>().Damage();
                 // TODO: Apply weapon effects if have it
             }
             if (attackRoll > impact)

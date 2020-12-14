@@ -60,8 +60,6 @@ public class DeepOneAttackMelee1 : CombatSkills
         {
             // Calculate the damage done
             InflictDamage();
-            // Apply a delay for the enemy damage animation
-            Invoke("InvokeDamage", 0.5f);
             // Apply weapon effects if have it
         }
         else
@@ -70,12 +68,6 @@ public class DeepOneAttackMelee1 : CombatSkills
             // Enemy will play its defense animation
             enemyCharacter.GetComponent<CharacterAnimations>().DefenseChoosing();
         }
-    }
-
-    private void InvokeDamage()
-    {
-        // Play Damage enemy animation
-        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

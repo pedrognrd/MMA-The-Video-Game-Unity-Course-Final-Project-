@@ -15,7 +15,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Rigidbody2D playerRigidbody;
-    [Range(0,10)]
+    /*[Range(0,10)]
     public float ortographicSizeMin;
     [Range(0, 10)]
     public float ortographicSizeMax;
@@ -25,49 +25,29 @@ public class CameraManager : MonoBehaviour
     public float zoomOutSpeed;
     [Range(0, 5)]
     public float timeToZoomOut;
-
-    private float ortographicSizeCurrent;
+    */
+    //private float ortographicSizeCurrent;
     private CinemachineVirtualCamera cvc;
-    private float timeStopped = 0;
     private float offset = 0.1f;
+    public float m_ScreenYInitial;
     private void Awake()
     {
         cvc = GetComponent<CinemachineVirtualCamera>();
-        playerRigidbody = GameObject.Find("BlueGhost").GetComponent<Rigidbody2D>();
-        cvc.Follow = GameObject.Find("BlueGhost").transform;
-        cvc.LookAt = GameObject.Find("BlueGhost").transform;
+        m_ScreenYInitial = cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY;
     }
     void Start()
     {
-        ortographicSizeCurrent = ortographicSizeMax;
+        //ortographicSizeCurrent = ortographicSizeMax;
     }
 
     void Update()
     {
         if (Mathf.Abs(playerRigidbody.velocity.x) > offset)
         {
-            timeStopped = 0;
-            IncreaseZoom();
+            cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = m_ScreenYInitial + 0.08f;
         } else
         {
-            timeStopped += Time.deltaTime;
-            if (timeStopped > timeToZoomOut)
-            {
-                DecreaseZoom();
-            }
+            cvc.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = m_ScreenYInitial;
         }
-    }
-
-    private void IncreaseZoom()
-    {
-        ortographicSizeCurrent = ortographicSizeCurrent - zoomInSpeed * Time.deltaTime;
-        ortographicSizeCurrent = Mathf.Max(ortographicSizeCurrent, ortographicSizeMin);
-        cvc.m_Lens.OrthographicSize = ortographicSizeCurrent;
-    }
-    private void DecreaseZoom()
-    {
-        ortographicSizeCurrent = ortographicSizeCurrent + zoomOutSpeed * Time.deltaTime;
-        ortographicSizeCurrent = Mathf.Min(ortographicSizeCurrent, ortographicSizeMax);
-        cvc.m_Lens.OrthographicSize = ortographicSizeCurrent;
     }
 }

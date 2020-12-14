@@ -46,8 +46,6 @@ public class DagonAttackMelee1 : CombatSkills
     {
         // Play Melee1 animation
         GetComponent<CharacterAnimations>().Melee1();
-        // Apply a delay for the enemy damage animation
-        //Invoke("InvokeMelee1", 0.5f);
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Claw of Dagon!");
         // A percentual roll is made
@@ -58,8 +56,6 @@ public class DagonAttackMelee1 : CombatSkills
             
             // Calculate the damage done
             InflictDamage();
-            // Apply a delay for the enemy damage animation
-            Invoke("InvokeDamage", 0.5f);
             // Apply weapon effects if have it
         }
         else
@@ -71,11 +67,6 @@ public class DagonAttackMelee1 : CombatSkills
         }
     }
 
-    private void InvokeDamage()
-    {
-        // Play Damage enemy animation
-        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
-    }
 
     private void InflictDamage()
     {

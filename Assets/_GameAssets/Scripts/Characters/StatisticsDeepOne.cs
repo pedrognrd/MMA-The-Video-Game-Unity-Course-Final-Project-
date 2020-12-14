@@ -27,16 +27,4 @@ public class StatisticsDeepOne : StatisticsCharacter
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            GetComponent<DeepOneAttackMelee1>().Attack();
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            GetComponent<DeepOneWeaponRange1>().Attack();
-        }
-    }
 }

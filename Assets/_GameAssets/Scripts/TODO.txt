@@ -7,7 +7,10 @@
 ------------- TODO --------------
 PROBAR : yourButton.interactable = false;
 
+- Sound for each character
+
 - Display enemy avatar in HUD when selected
+
 - Clean enemy avatar in HUD when finishing turn
 
 - Building Final HUD
@@ -23,8 +26,6 @@ PROBAR : yourButton.interactable = false;
 	- NO All animations and interactions are corrected
 
 - Instantiate flying points with delay
-
-
 
 - IN COMBAT
 	- Disable player movement
@@ -76,6 +77,9 @@ PROBAR : yourButton.interactable = false;
 ------------- TODO --------------
 
 ------------- DONE --------------
+
+- Move Camera Y position when walking
+
 - Selecting enemy
 	- When enemy is selected by clicking
 		- Show him in blue till the end of Blue Ghost Attack

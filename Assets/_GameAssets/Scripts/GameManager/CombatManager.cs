@@ -36,7 +36,7 @@ public class CombatManager : MonoBehaviour
 
     public void CombatEnds()
     {
-        print("Combat ends when there are enemies in game");
+        // Combat ends when there are enemies in game
         StartCoroutine(FinishingCombatEnds(2));
     }
 
@@ -44,7 +44,7 @@ public class CombatManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
-        print("Cleaning turnCounter");
+        // Cleaning turnCounter
         turnCounter = 0;
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Combat finished, continue walking");
     }

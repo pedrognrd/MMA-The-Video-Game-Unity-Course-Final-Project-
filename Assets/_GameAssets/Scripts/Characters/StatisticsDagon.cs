@@ -26,17 +26,6 @@ public class StatisticsDagon : StatisticsCharacter
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            GetComponent<DagonAttackMelee1>().Attack();
-        }
-       if (Input.GetKeyDown(KeyCode.M))
-        {
-            GetComponent<DagonWeaponRange1>().Attack();
-        }
+        hitPoints = 10;
     }
 }

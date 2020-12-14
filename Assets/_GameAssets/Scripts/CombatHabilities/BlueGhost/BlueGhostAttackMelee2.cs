@@ -61,8 +61,6 @@ public class BlueGhostAttackMelee2 : CombatSkills
         {
             // Calculate the damage done
             InflictDamage();
-            // Play Damage enemy animation
-            enemyCharacter.GetComponent<CharacterAnimations>().Damage();
             // Apply weapon effects if have it
             // Substract ammo if have it
         }

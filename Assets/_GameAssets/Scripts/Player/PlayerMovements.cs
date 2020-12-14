@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,15 +31,6 @@ public class PlayerMovements : MonoBehaviour
     private void Displace()
     {
         rigidBody.velocity = new Vector2(x * Time.deltaTime * speed, rigidBody.velocity.y);
-
-        /*if (Mathf.Abs(rigidBody.velocity.x) > 0)
-        {
-            animator.SetBool("Walking", true);
-        }
-        else
-        {
-            animator.SetBool("Walking", false);
-        }*/
     }
 }
 

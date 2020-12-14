@@ -58,8 +58,6 @@ public class BlueGhostAttackMelee1 : CombatSkills
         {
             // Calculate the damage done
             InflictDamage();
-            // Apply a delay for the enemy damage animation
-            Invoke("InvokeDamage", 0.0f);
             // Apply weapon effects if have it
         }
         else
@@ -76,12 +74,6 @@ public class BlueGhostAttackMelee1 : CombatSkills
     {
         // Play Melee1 animation
         GetComponent<CharacterAnimations>().Melee1();
-    }
-
-    private void InvokeDamage()
-    {
-        // Play Damage enemy animation
-        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

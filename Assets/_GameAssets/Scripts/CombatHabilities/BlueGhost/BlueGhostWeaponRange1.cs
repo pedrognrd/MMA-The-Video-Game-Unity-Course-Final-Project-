@@ -53,10 +53,6 @@ public class BlueGhostWeaponRange1 : CombatSkills
         {
             // Calculate the damage done
             InflictDamage();
-            // Play Damage enemy animation
-            //enemyCharacter.GetComponent<CharacterAnimations>().Damage();
-            // Apply a delay for the enemy damage animation
-            Invoke("InvokeDamage", 1.0f);
             // Apply weapon effects if have it
             // Substract ammo if have it
         }
@@ -68,12 +64,6 @@ public class BlueGhostWeaponRange1 : CombatSkills
             enemyCharacter.GetComponent<CharacterAnimations>().Defense();
         }
         GameObject.Find("GameManager").GetComponent<BlueGhostTurnManager>().BlueGhostAttacked();
-    }
-
-    private void InvokeDamage()
-    {
-        // Play Damage enemy animation
-        enemyCharacter.GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()

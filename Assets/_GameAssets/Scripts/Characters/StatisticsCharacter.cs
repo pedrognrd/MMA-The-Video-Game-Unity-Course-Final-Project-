@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public abstract class StatisticsCharacter : MonoBehaviour
 {
@@ -62,54 +63,6 @@ public abstract class StatisticsCharacter : MonoBehaviour
         //Update EnemySelectedManager
         characterClicked();
     }
-    public void DamageReceived(int damage)
-    {
-        hitPoints -= damage;
-        // Instantiate flying points
-        GetComponentInChildren<FlyingPointsManager>().InstantiateFlyingPoints(damage);
-        // Is the enemy dead?
-        if (hitPoints <= 0)
-        {
-            textEvent = GameObject.Find("TextEvent1");
-            textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
-
-            if (gameObject.name == "BlueGhost")
-            {
-                print("BLUE GHOST MUERE");
-                GetComponent<CharacterAnimations>().Died();
-                StartCoroutine(DestroyHeroGameObject(2));
-            }
-            else
-            {
-                // Decrease number of enemies in game and its counter
-                GetComponent<CharacterAnimations>().Died();
-                StartCoroutine(DestroyEnemyGameObject(1));
-            }
-        }
-        else 
-        {
-            // Play Damage enemy animation
-            GetComponent<CharacterAnimations>().Damage();
-        }
-
-    }
-
-    IEnumerator DestroyHeroGameObject(float time)
-    {
-        yield return new WaitForSeconds(time);
-        // Code to execute after the delay
-        Destroy(gameObject);
-    }
-
-    IEnumerator DestroyEnemyGameObject(float time)
-    {
-        yield return new WaitForSeconds(time);
-        // Code to execute after the delay
-        Destroy(gameObject);
-        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame--;
-        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
-        GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().Enemydied();
-    }
 
     public void characterClicked()
     {
@@ -153,6 +106,76 @@ public abstract class StatisticsCharacter : MonoBehaviour
                 }
             }
         }
+    }
+    public void DamageReceived(int damage)
+    {
+        hitPoints -= damage;
+        // Instantiate flying points
+        GetComponentInChildren<FlyingPointsManager>().InstantiateFlyingPoints(damage);
+        // Is the enemy dead?
+        if (hitPoints <= 0)
+        {
+            textEvent = GameObject.Find("TextEvent1");
+            textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
+
+            if (gameObject.name == "BlueGhost")
+            {
+                GetComponent<CharacterAnimations>().Died();
+                StartCoroutine(DestroyHeroGameObject(2));
+            }
+            else
+            {
+                // Decrease number of enemies in game and its counter
+                GetComponent<CharacterAnimations>().Died();
+                StartCoroutine(DestroyEnemyGameObject(2));
+            }
+        }
+        else
+        {
+            // Play Damage enemy animation
+            GetComponent<CharacterAnimations>().Damage();
+        }
+
+    }
+
+    IEnumerator DestroyHeroGameObject(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        Destroy(gameObject);
+    }
+
+    IEnumerator DestroyEnemyGameObject(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().enemiesInGame--;
+        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
+        // If Dagon is dead, the game is over
+        if (gameObject.name == "Dagon(Clone)")
+        {
+            StartCoroutine(LoadEndScene(0));
+        }
+        else 
+        {
+            StartCoroutine(LoadEnemyDied(0));
+        }
+        
+    }
+
+    IEnumerator LoadEndScene(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        SceneManager.LoadScene("EndScene");
+    }
+
+    IEnumerator LoadEnemyDied(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        Destroy(gameObject);
+        GameObject.Find("GameManager").GetComponent<EnemySelectedManager>().Enemydied();
     }
 }
 

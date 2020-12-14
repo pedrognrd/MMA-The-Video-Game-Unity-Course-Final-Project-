@@ -65,8 +65,6 @@ public class DeepOneWeaponRange1 : CombatSkills
             {
                 // Calculate the damage done
                 InflictDamage();
-                // Apply a delay for the enemy damage animation
-                Invoke("InvokeDamage", 1.0f);
                 // TODO: Apply weapon effects if have it
             }
             if (attackRoll > impact)
@@ -86,12 +84,6 @@ public class DeepOneWeaponRange1 : CombatSkills
         }
         // All enemies recover its original color
         GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
-    }
-
-    private void InvokeDamage()
-    {
-        // Play Damage enemy animation
-        GetComponent<CharacterAnimations>().Damage();
     }
 
     private void InflictDamage()
