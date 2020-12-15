@@ -21,16 +21,19 @@ public class CombatManager : MonoBehaviour
         textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Dagon is at the end of the street!");
         // Hide Enemy Panel data
         HideEnemyPanelData();
+        GameObject.Find("PanelCombatSkillsInfo").GetComponent< PanelHeroSkillsManager >().hideWeaponsInfo();
     }
 
     public void CombatEnds()
     {
-        // Combat ends when there are enemies in game
+        // Combat ends when there are no enemies in game
         StartCoroutine(FinishingCombatEnds(2));
         // Display default enemy avatar
         GameObject.Find("AvatarEnemyDefault").GetComponent<Image>().enabled = true;
         GameObject.Find("AvatarEnemyDeepOne").GetComponent<Image>().enabled = false;
         GameObject.Find("AvatarEnemyDagon").GetComponent<Image>().enabled = false;
+        // Cleaning Panel Combat Panel
+        GameObject.Find("PanelCombat").GetComponent<PanelCombatManager>().CleaningCombatPanel();
     }
 
     IEnumerator FinishingCombatEnds(float time)
@@ -75,7 +78,7 @@ public class CombatManager : MonoBehaviour
 
     public void NewCombat()
     {
-        print("newTurn can happen after spawning enemies or after first turn sequence finished");
+        // NewTurn can happen after spawning enemies or after first turn sequence finished
         StartCoroutine(StartingNewCombat(2));
     }
 
@@ -83,7 +86,6 @@ public class CombatManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
-        //GetComponent<TurnSequenceManager>().turnSequenceDone = false;
         GetComponent<TurnSequenceManager>().NewTurn();
     }
 }

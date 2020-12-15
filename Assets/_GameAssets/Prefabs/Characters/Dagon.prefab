@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7783369887375119923}
   - component: {fileID: 3381259242398696869}
   - component: {fileID: 1896639022980343168}
+  - component: {fileID: 9126003924114627959}
   m_Layer: 9
   m_Name: Dagon
   m_TagString: Enemy
@@ -154,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 
   characterConcept: 
+  characterDescription: 
   characterAvatar: {fileID: 1571501366305239144, guid: 58d0d5039de12ed458ae70f88ed53ace,
     type: 3}
   constitution: 0
@@ -226,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c5728a143c1a3499a236a1cfdc419d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 965806670086626635}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -247,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128d9599b7049a468e02993021962d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 965806670086626635}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -311,6 +315,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!58 &9126003924114627959
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965806670086626635}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.37704372}
+  serializedVersion: 2
+  m_Radius: 5.4036455
 --- !u!1 &965806670180827962
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,9 +428,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.9190402}
   serializedVersion: 2
-  m_Radius: 6.504674
+  m_Radius: 3.6061587
 --- !u!95 &5691471259096900401
 Animator:
   serializedVersion: 3

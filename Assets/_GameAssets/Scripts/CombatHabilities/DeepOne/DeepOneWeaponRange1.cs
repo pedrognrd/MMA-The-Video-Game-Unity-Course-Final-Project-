@@ -50,8 +50,6 @@ public class DeepOneWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
-        // Turning blue to highlight the chosen enemy
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         // Play Range1 animation
         GetComponent<CharacterAnimations>().Range1();
         if (canThrow)

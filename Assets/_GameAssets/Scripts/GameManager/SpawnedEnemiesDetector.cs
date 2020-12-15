@@ -37,6 +37,7 @@ public class SpawnedEnemiesDetector : MonoBehaviour
         foreach (GameObject enemy in enemies) 
         {
             enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            //GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterNotPlaying(enemy);
         }
     }
 

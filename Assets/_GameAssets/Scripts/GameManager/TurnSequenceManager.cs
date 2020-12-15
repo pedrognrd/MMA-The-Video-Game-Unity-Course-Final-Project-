@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class TurnSequenceManager : MonoBehaviour
 {
     // THIS CLASS CONTROLS THE TURN SEQUENCE AS FOLLOWS
+    [SerializeField]
+    public GameObject panelCombatManager;
     // Store both kind of players in game
     [Header("Players and who's first in turn order")]
-    public string[] players = new string[] { "BlueGhost", "Enemy" };
+    public string[] players = new string[] { "Blue Ghost", "Enemy" };
     // Will define who acts first in each turn
     public string whoPlaysFirst;
     [Header("Enemy selected")]
@@ -34,10 +37,11 @@ public class TurnSequenceManager : MonoBehaviour
 
     public void NewTurn()
     {
+        // Increase turn counter in emerging text
         GetComponent<CombatManager>().turnCounter++;
-        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Turn " + GetComponent<CombatManager>().turnCounter);
+        // Increase turn in Panel Combat Panel
+        GameObject.Find("PanelCombat").GetComponent<PanelCombatManager>().turn++;
         // Starting new Combat Sequence
-        print("Enemies spawned " + GetComponent<SpawnedEnemiesDetector>().enemiesInGame);
         // Select who is first to play the turn
         WhoIsFirst();
         // Playing action of the first to play
@@ -50,17 +54,30 @@ public class TurnSequenceManager : MonoBehaviour
         int index = Random.Range(0, GetComponent<SpawnedEnemiesDetector>().enemies.Length);
         // Selecting an enemy from enemies array
         enemySelected = GetComponent<SpawnedEnemiesDetector>().enemies[index];
-        // All enemies recover its original color
-        GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
-        // Turning blue to highlight the chosen enemy
-        enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
-        //enemySelected.GetComponent<SpriteRenderer>().color = Color.blue;
+        // Displaying Enemy Data in Panel Combat
+        panelCombatManager.GetComponent<PanelCombatManager>().DisplayCombatPanelInfo(enemySelected);
+        // Changing 2D lights to focus on enemy
+        LightFocusCharacterPlaying(enemySelected);
         // Showing enemySelected data in PanelEnemy
         GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
         // By default, BlueGhost will attack to the enemySelected
         GetComponent<EnemySelectedManager>().EnemySelected(enemySelected);
         // Enemy selected plays its action
         GetComponent<EnemySelectedManager>().chooseAttack();
+    }
+
+    public void LightFocusCharacterPlaying(GameObject character)
+    {
+        // Changing 2D lights to focus on characer
+        character.GetComponentInChildren<Light2D>().pointLightInnerAngle = 32;
+        character.GetComponentInChildren<Light2D>().pointLightOuterAngle = 32;
+    }
+
+    public void LightFocusCharacterNotPlaying(GameObject character)
+    {
+        // Revovering 2D lights to focus on character
+        character.GetComponentInChildren<Light2D>().pointLightInnerAngle = 18;
+        character.GetComponentInChildren<Light2D>().pointLightOuterAngle = 22;
     }
 
     public void FirstToPlay()
@@ -71,9 +88,10 @@ public class TurnSequenceManager : MonoBehaviour
         GetComponent<CombatManager>().DisplayEnemyPanelData();
         if (whoPlaysFirst == "BlueGhost")
         {
-            // Enabling Blue Ghost buttons panel
-            //GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
-            // Waiting till Blue Ghost plays its turn
+            // Displaying BlueGhost Data in Panel Combat
+            GameObject.Find("PanelCombat").GetComponent<PanelCombatManager>().DisplayCombatPanelInfo(GameObject.Find("BlueGhost"));
+            // Changing 2D lights to focus on enemy
+            GetComponent<TurnSequenceManager>().LightFocusCharacterPlaying(GameObject.Find("BlueGhost"));
         }
         if (whoPlaysFirst == "Enemy")
         {
@@ -86,12 +104,15 @@ public class TurnSequenceManager : MonoBehaviour
 
     public void FinishingTurn() 
     {
+        // Revovering 2D lights to focus on character
+        GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterNotPlaying(GameObject.Find("BlueGhost"));
+        // Revovering 2D lights to focus on character
+        GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterNotPlaying(enemySelected);
         // After both players play its actions, evaluate if there will be a new turn
         if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame > 0)
         {
             // Starting new turn sequence
             GetComponent<TurnSequenceManager>().NewTurn();
-            
         }
         if (GetComponent<SpawnedEnemiesDetector>().enemiesInGame == 0)
         {
@@ -104,7 +125,8 @@ public class TurnSequenceManager : MonoBehaviour
     {
         // Selecting Hero or Enemy to play first in Turn Sequence
         whoPlaysFirst = players[Random.Range(0, players.Length)];
-        print("whoIsFirst " + whoPlaysFirst);
+        // Display Emerging texts
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Turn " + GetComponent<CombatManager>().turnCounter);
         textEvent2.GetComponent<PanelTextEventManager>().UpdateText("It is " + whoPlaysFirst + " turn"); 
     }
 }

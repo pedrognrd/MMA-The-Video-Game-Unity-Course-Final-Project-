@@ -91,17 +91,16 @@ public abstract class StatisticsCharacter : MonoBehaviour
             //Check if we hit anything
             if (hit)
             {
-                print(hit.collider.name);
                 // If click over a enemy spawned, its data will be display in HUD en selected in game
                 if (hit.collider.CompareTag("EnemySpawned"))
-                {
+                {   
                     string hitName = hit.collider.name;
                     GameObject controlledUnit = hit.transform.gameObject;
-                    gameManager.GetComponent<EnemySelectedManager>().EnemySelected(controlledUnit);
-                    // All enemies recover its original color
+                    // Delete all lights focus over enemies
                     GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
-                    // Turning blue to highlight the chosen enemy
-                    hit.collider.GetComponent<SpriteRenderer>().color = Color.blue;
+                    // Changing 2D lights to focus on enemy
+                    GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterPlaying(controlledUnit);
+                    gameManager.GetComponent<EnemySelectedManager>().EnemySelected(controlledUnit);
                     // Enabling Blue Ghost buttons panel
                     GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
                 }
@@ -118,6 +117,10 @@ public abstract class StatisticsCharacter : MonoBehaviour
         {
             textEvent = GameObject.Find("TextEvent1");
             textEvent.GetComponent<PanelTextEventManager>().UpdateText(characterName + " is dead");
+
+            // Show/Hide circle colliders in character to manage the dying animation
+            GetComponent<CircleCollider2D>().enabled = true;
+            GetComponentInChildren<CircleCollider2D>().enabled = false;
 
             if (gameObject.name == "BlueGhost")
             {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1097620401302443158}
   - component: {fileID: 1097620401302443153}
   m_Layer: 0
-  m_Name: Point Light 2D HIGH (1)
+  m_Name: Point Light 2D HIGH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,11 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097620401302443159}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.14, y: 16, z: 0}
+  m_LocalPosition: {x: -0.14000034, y: 16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1097620402448302765}
-  m_RootOrder: 7
+  m_Father: {fileID: 1097620402599154816}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1097620401302443153
 MonoBehaviour:
@@ -415,7 +415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1097620402448302765
 Transform:
   m_ObjectHideFlags: 0
@@ -434,7 +434,6 @@ Transform:
   - {fileID: 1097620401616645081}
   - {fileID: 1097620402946783367}
   - {fileID: 1097620403121306309}
-  - {fileID: 1097620401302443158}
   m_Father: {fileID: 1097620402594522143}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -623,6 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 800
+  endPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6776768366243135446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 
   characterConcept: 
+  characterDescription: 
   characterAvatar: {fileID: 1433625614111217836, guid: f6ffcf6ddb08ff2429d4680309246a16,
     type: 3}
   constitution: 0
@@ -694,6 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5ccaa88a6d2794bab064c2d262030f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 1097620402594522131}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -729,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe9e7aec306fae4e87441791b45d064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 1097620402594522131}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -750,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df9769e9e3113a4f9b3b8ffbc2f1101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 1097620402594522131}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -770,6 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7de0542e1b4d3f44aa5856ff1ad31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: 0
   character: {fileID: 1097620402594522131}
   textEvent1: {fileID: 0}
   textEvent2: {fileID: 0}
@@ -808,7 +813,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1097620401302443158}
   m_Father: {fileID: 1097620402594522143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

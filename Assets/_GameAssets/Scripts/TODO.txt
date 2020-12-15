@@ -12,17 +12,29 @@
 -------- STOPPERS&IDEAS ---------
 
 ------------- TODO --------------
-- Building Final HUD
-	- Turn playing HUD
-		- Displays who is playing
-		- Displays number of turn
+- Lights disable over some layers or gameobjects
+	- Light focus when click the enemy: ok
+	- Light focus when enemy is selected in enemy turn: ok
+	- Light focus when hero turn & first to play: ok
+	- Light recover them initial shape
+	- Light focus when hero turn & second to play
+	- Light focus when enemy turn & second to play
+	- Light focus change when selecting different enemies
+
+- Blue Ghost walk by himself till reach spawners
+
+- Building Combat Panel
+	- Displaying first player avatar: ok
+	- Displaing second player avatar: ok
+	- Increase turn counter when both players finished: ok
+	- turn counter is zero when combat is finished: ok
+	- Changing who is playing with delay
+
 
 - CombatLight disable while walking / enable when combat
 - Fog particles
-- Lights disable over some layers or gameobjects
 - Sound for each character
 
-- Show data when player hover attack buttons
 - Timing animations and text: CONTROL
 	- NO All animations and interactions are corrected
 - Instantiate flying points with delay
@@ -65,6 +77,10 @@
 ------------- TODO --------------
 
 ------------- DONE --------------
+- When enemy dies, hide/show colliders
+
+- Show data when player hover attack buttons
+
 - Clean enemy avatar in HUD at beginning and when finishing turn
 
 - Display hero weapon when hover

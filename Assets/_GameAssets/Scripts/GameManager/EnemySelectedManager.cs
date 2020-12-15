@@ -86,8 +86,12 @@ public class EnemySelectedManager : MonoBehaviour
         {
             // Disabling Blue Ghost buttons panel
             GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
-            // Enabling Blue Ghost buttons panel
-            //GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().EnableHUD();
+            // Displaying BlueGhost Data in Panel Combat
+            GameObject.Find("PanelCombat").GetComponent<PanelCombatManager>().DisplayCombatPanelInfo(GameObject.Find("BlueGhost"));
+            // Revovering 2D lights to focus on character
+            GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterPlaying(GameObject.Find("BlueGhost"));
+            // Revovering 2D lights to focus on character
+            GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterNotPlaying(enemySelected);
             StartCoroutine(EnemyWaiting(2));
         }
     }
@@ -96,8 +100,6 @@ public class EnemySelectedManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
-        // All enemies recover its original color
-        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
         GetComponent<TurnSequenceManager>().FinishingTurn();
     }
 
@@ -105,8 +107,6 @@ public class EnemySelectedManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
-        // All enemies recover its original color
-        GameObject.Find("GameManager").GetComponent<SpawnedEnemiesDetector>().PaintItWhite();
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Ghost, is your turn!");
     }
 
@@ -119,7 +119,6 @@ public class EnemySelectedManager : MonoBehaviour
     public void EnemySelected(GameObject enemySend)
     {
         enemySelected = enemySend;
-        print("enemySelected.name " + enemySelected.name);
         // Sending enemySelected data to BlueGhost
         blueGhost = GameObject.Find("BlueGhost");
         blueGhost.GetComponent<BlueGhostAttackMelee1>().UpdatingEnemySelected(enemySelected);

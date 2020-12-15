@@ -12,7 +12,6 @@ public class SpawnerEnemies : MonoBehaviour
     private float timeBetweenInstances;
     public int spawning;
     private int enemiesCreated = 0;
-    private int movinPrefab = 0;
 
     public void SpawnEnemies(int number)
     {

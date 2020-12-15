@@ -36,8 +36,8 @@ public class BlueGhostAttackMelee1 : CombatSkills
         chargers = -1; // -1 = infinite
         criticalMod = -5;
         // Add character damageBonus
-        damageMax = 4;
-        damageMin = 1;
+        damageMax = 8;
+        damageMin = 4;
         distance = 1; // When the character increase its level, distanci will be higer
         hitEffect = 0; // 0 = none, 1 = bleeding, 2 = move, 3 = stun
         impact = 50;

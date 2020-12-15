@@ -16,6 +16,7 @@ public class BlueGhostTurnManager : MonoBehaviour
         // If Blue Ghost was the first to play, enemy can play
         if (GetComponent<TurnSequenceManager>().whoPlaysFirst == "BlueGhost")
         {
+            // Starts enemy turn
             GetComponent<TurnSequenceManager>().EnemyPlays();
         }
         else
@@ -23,12 +24,15 @@ public class BlueGhostTurnManager : MonoBehaviour
             // Evaluate if there are more enemies in game
             StartCoroutine(BlueGhostFinished(2));
         }
+        // Revovering 2D lights to focus on character
+        GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().LightFocusCharacterNotPlaying(GameObject.Find("BlueGhost"));
     }
 
     IEnumerator BlueGhostFinished(float time)
     {
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
+        // Displaying Enemy Data in Panel Combat
         GetComponent<TurnSequenceManager>().FinishingTurn();
     }
 }

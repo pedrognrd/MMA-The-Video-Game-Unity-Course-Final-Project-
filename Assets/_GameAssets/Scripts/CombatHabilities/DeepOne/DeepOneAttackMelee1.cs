@@ -47,8 +47,6 @@ public class DeepOneAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
-        // Turning blue to highlight the chosen enemy
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         // Play Melee1 animation
         GetComponent<CharacterAnimations>().Melee1();
         // Using weapon, a message is shown in screen
