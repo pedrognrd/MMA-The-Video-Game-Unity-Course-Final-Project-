@@ -9,6 +9,7 @@ public abstract class StatisticsCharacter : MonoBehaviour
     [Header("PROFILE")]
     public string characterName;
     public string characterConcept;
+    public string characterDescription;
     [SerializeField]
     public GameObject characterAvatar;
 
@@ -56,11 +57,11 @@ public abstract class StatisticsCharacter : MonoBehaviour
 
     public GameObject textEvent;
     GameObject gameManager;
+    GameObject combatLight;
 
     private void Update()
     {
         gameManager = GameObject.Find("GameManager");
-        //Update EnemySelectedManager
         characterClicked();
     }
 

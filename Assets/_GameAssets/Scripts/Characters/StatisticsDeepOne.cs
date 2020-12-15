@@ -11,6 +11,7 @@ public class StatisticsDeepOne : StatisticsCharacter
     {
         characterName = "Deep One";
         characterConcept = "Server of Dagon";
+        characterDescription = "Humanoid beings with fish, human and amphibian-like traits. They have scaled, ridged backs, as well as webbed hands and gilled necks. Notably, they have a head similar to that of a fish, with eyes incapable of blinking.";
 
         constitution = 10;
         dexterity = 10;

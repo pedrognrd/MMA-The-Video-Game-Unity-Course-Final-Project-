@@ -28,6 +28,8 @@ public class SpawnedEnemiesDetector : MonoBehaviour
         PaintItWhite();
         // Displaying data of one of the spawned enemies in Enemy Canvas Panel
         SelectEnemy();
+        // Display Enemy Panel data
+        GetComponent<CombatManager>().DisplayEnemyPanelData();
     }
 
     public void PaintItWhite()
@@ -40,12 +42,9 @@ public class SpawnedEnemiesDetector : MonoBehaviour
 
     public void SelectEnemy()
     {
-        print("ESTOY EN SelectEnemy");
         // Selecting an enemy in enemies array to display in Enemy Canvas Panel
         int index = Random.Range(0, enemies.Length);
         enemySelected = enemies[index];
-        // Turning blue to highlight the chosen enemy
-        //enemySelected.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         // Showing enemySelected data in PanelEnemy
         GameObject.Find("PanelEnemy").GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
         // By default, BlueGhost will attack to the enemySelected

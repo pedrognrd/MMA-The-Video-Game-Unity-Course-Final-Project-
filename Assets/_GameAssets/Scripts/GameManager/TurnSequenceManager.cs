@@ -67,8 +67,8 @@ public class TurnSequenceManager : MonoBehaviour
     {
         // Disabling Blue Ghost buttons panel until player select an enemy
         GameObject.Find("PanelHero").GetComponent<PanelHeroManager>().DisableHUD();
-        // Detecting enemies in scene
-        GetComponent<SpawnedEnemiesDetector>().DetectEnemies();
+        // Display Enemy Panel data
+        GetComponent<CombatManager>().DisplayEnemyPanelData();
         if (whoPlaysFirst == "BlueGhost")
         {
             // Enabling Blue Ghost buttons panel

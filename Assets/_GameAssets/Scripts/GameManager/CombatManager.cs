@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
@@ -18,6 +19,58 @@ public class CombatManager : MonoBehaviour
         // Initializing turn manager variables
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Save the city, Blue Ghost!");
         textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Dagon is at the end of the street!");
+        // Hide Enemy Panel data
+        HideEnemyPanelData();
+    }
+
+    public void CombatEnds()
+    {
+        // Combat ends when there are enemies in game
+        StartCoroutine(FinishingCombatEnds(2));
+        // Display default enemy avatar
+        GameObject.Find("AvatarEnemyDefault").GetComponent<Image>().enabled = true;
+        GameObject.Find("AvatarEnemyDeepOne").GetComponent<Image>().enabled = false;
+        GameObject.Find("AvatarEnemyDagon").GetComponent<Image>().enabled = false;
+    }
+
+    IEnumerator FinishingCombatEnds(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Code to execute after the delay
+        // Hide Enemy Panel data
+        HideEnemyPanelData();
+        // Cleaning turnCounter
+        turnCounter = 0;
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Combat finished, continue walking");
+    }
+
+    public void DisplayEnemyPanelData()
+    {
+        // Display Enemy Panel data
+        GameObject.Find("EnemyName").GetComponent<Text>().enabled = true;
+        GameObject.Find("EnemyDescription").GetComponent<Text>().enabled = true;
+        GameObject.Find("DamageBonus").GetComponent<Text>().enabled = true;
+        GameObject.Find("EnemyConcept").GetComponent<Text>().enabled = true;
+        GameObject.Find("EnemyHitPoints").GetComponent<Text>().enabled = true;
+        GameObject.Find("AvatarEnemyLife").GetComponent<Image>().enabled = true;
+        GameObject.Find("MeleeStatistics").GetComponent<Text>().enabled = true;
+        GameObject.Find("IconMelee").GetComponent<Image>().enabled = true;
+        GameObject.Find("RangeStatistics").GetComponent<Text>().enabled = true;
+        GameObject.Find("IconRange").GetComponent<Image>().enabled = true;
+    }
+    private static void HideEnemyPanelData()
+    {
+        // Hide Enemy Panel data
+        GameObject.Find("EnemyName").GetComponent<Text>().enabled = false;
+        GameObject.Find("EnemyDescription").GetComponent<Text>().enabled = false;
+        GameObject.Find("DamageBonus").GetComponent<Text>().enabled = false;
+        GameObject.Find("EnemyConcept").GetComponent<Text>().enabled = false;
+        GameObject.Find("EnemyHitPoints").GetComponent<Text>().enabled = false;
+        GameObject.Find("AvatarEnemyLife").GetComponent<Image>().enabled = false;
+        GameObject.Find("MeleeStatistics").GetComponent<Text>().enabled = false;
+        GameObject.Find("IconMelee").GetComponent<Image>().enabled = false;
+        GameObject.Find("RangeStatistics").GetComponent<Text>().enabled = false;
+        GameObject.Find("IconRange").GetComponent<Image>().enabled = false;
     }
 
     public void NewCombat()
@@ -32,20 +85,5 @@ public class CombatManager : MonoBehaviour
         // Code to execute after the delay
         //GetComponent<TurnSequenceManager>().turnSequenceDone = false;
         GetComponent<TurnSequenceManager>().NewTurn();
-    }
-
-    public void CombatEnds()
-    {
-        // Combat ends when there are enemies in game
-        StartCoroutine(FinishingCombatEnds(2));
-    }
-
-    IEnumerator FinishingCombatEnds(float time)
-    {
-        yield return new WaitForSeconds(time);
-        // Code to execute after the delay
-        // Cleaning turnCounter
-        turnCounter = 0;
-        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Combat finished, continue walking");
     }
 }

@@ -9,9 +9,9 @@ public class StatisticsDagon : StatisticsCharacter
     public int sanityLoss;
     protected void Awake()
     {
-        characterName = "Dagon, Great Old One";
+        characterName = "Father Dagon";
         characterConcept = "Server of Cthulhu";
-
+        characterDescription = "Deity who presides over the Deep Ones. Also known as Father Dagon and the consort of Mother Hydra, although they are Deities, they are generally not considered Great Old Ones.";
         constitution = 50;
         dexterity = 20;
         intelligence = 20;
@@ -26,6 +26,5 @@ public class StatisticsDagon : StatisticsCharacter
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
-        hitPoints = 10;
     }
 }

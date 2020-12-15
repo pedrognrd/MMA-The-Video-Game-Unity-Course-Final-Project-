@@ -15,7 +15,7 @@ public abstract class CombatSkills : MonoBehaviour
     protected int damageMin;
     protected int distance; // When the character increase its level, distance will be higer
     protected int hitEffect; // 0 = none, 1 = bleeding, 2 = move, 3 = stun
-    protected int impact;
+    public int impact;
     protected int kind; // 1 = melee, 2 = range, 3 = magic
     [SerializeField]
     protected GameObject character;

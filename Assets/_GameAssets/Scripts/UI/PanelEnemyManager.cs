@@ -9,8 +9,12 @@ public class PanelEnemyManager : MonoBehaviour
     [Header("PANEL OBJECTS")] 
     private Text textName;
     private Text textConcept;
+    private Text textDescription;
+    private Text textDamageBonus;
     public Text textHitPoints;
     private Text textSanityPoints;
+    private Text textMeleeStatistics;
+    private Text textRangeStatistics; 
     public int hitPoints;
     private int hitPointsMax;
     private int sanity;
@@ -22,6 +26,13 @@ public class PanelEnemyManager : MonoBehaviour
     public Button attackMelee2;
     public Button attackRange1;
     public Button attackRange2;
+
+    private void Awake()
+    {
+        GameObject.Find("AvatarEnemyDefault").GetComponent<Image>().enabled = true;
+        GameObject.Find("AvatarEnemyDeepOne").GetComponent<Image>().enabled = false;
+        GameObject.Find("AvatarEnemyDagon").GetComponent<Image>().enabled = false;
+    }
 
     public void EnableHUD()
     {
@@ -39,28 +50,51 @@ public class PanelEnemyManager : MonoBehaviour
         attackRange1.interactable = false;
         attackRange2.interactable = false;
     }
+
+    public void DisplayAvatar(GameObject enemySelected)
+    {
+        if (enemySelected.name == "DeepOne" || enemySelected.name == "DeepOne(Clone)")
+        {
+            GameObject.Find("AvatarEnemyDefault").GetComponent<Image>().enabled = false;
+            GameObject.Find("AvatarEnemyDeepOne").GetComponent<Image>().enabled = true;
+            GameObject.Find("AvatarEnemyDagon").GetComponent<Image>().enabled = false;
+        }
+        if (enemySelected.name == "Dagon" || enemySelected.name == "Dagon(Clone)")
+        {
+            GameObject.Find("AvatarEnemyDefault").GetComponent<Image>().enabled = false;
+            GameObject.Find("AvatarEnemyDeepOne").GetComponent<Image>().enabled = false;
+            GameObject.Find("AvatarEnemyDagon").GetComponent<Image>().enabled = true;
+        }
+    }
+
     public void UpdateEnemyPanel(GameObject hitName)
     {
         textName = GameObject.Find("EnemyName").GetComponent<Text>();
         textName.text = hitName.GetComponent<StatisticsCharacter>().characterName;
         textConcept = GameObject.Find("EnemyConcept").GetComponent<Text>();
         textConcept.text = hitName.GetComponent<StatisticsCharacter>().characterConcept;
+        textDescription = GameObject.Find("EnemyDescription").GetComponent<Text>();
+        textDescription.text = hitName.GetComponent<StatisticsCharacter>().characterDescription;
+        textDamageBonus = GameObject.Find("DamageBonus").GetComponent<Text>();
+        textDamageBonus.text = "Damage Bonus: " + hitName.GetComponent<StatisticsCharacter>().damageBonus;
+        if (hitName.name == "DeepOne" || hitName.name == "DeepOne(Clone)")
+        {
+            textMeleeStatistics = GameObject.Find("MeleeStatistics").GetComponent<Text>();
+            textMeleeStatistics.text = hitName.GetComponent<DeepOneAttackMelee1>().impact.ToString();
+            textRangeStatistics = GameObject.Find("RangeStatistics").GetComponent<Text>();
+            textRangeStatistics.text = hitName.GetComponent<DeepOneWeaponRange1>().impact.ToString();
+        }
+
+        if (hitName.name == "Dagon" || hitName.name == "Dagon(Clone)") 
+        {
+            textMeleeStatistics = GameObject.Find("MeleeStatistics").GetComponent<Text>();
+            textMeleeStatistics.text = hitName.GetComponent<DagonAttackMelee1>().impact.ToString();
+            textRangeStatistics = GameObject.Find("RangeStatistics").GetComponent<Text>();
+            textRangeStatistics.text = hitName.GetComponent<DagonWeaponRange1>().impact.ToString();
+        }
 
         hitPoints = hitName.GetComponent<StatisticsCharacter>().hitPoints;
         hitPointsMax = hitName.GetComponent<StatisticsCharacter>().hitPointsMax;
-        textHitPoints = GameObject.Find("EnemyHitPoints").GetComponent<Text>();
-        textHitPoints.text = hitPoints + "/" + hitPointsMax;
-    }
-
-    public void LoadingStatistics()
-    {
-        textName = GameObject.Find("EnemyName").GetComponent<Text>();
-        textName.text = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().characterName;
-        textConcept = GameObject.Find("EnemyConcept").GetComponent<Text>();
-        textConcept.text = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().characterConcept;
-
-        hitPoints = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().hitPoints;
-        hitPointsMax = GameObject.Find("Dagon").GetComponent<StatisticsCharacter>().hitPointsMax;
         textHitPoints = GameObject.Find("EnemyHitPoints").GetComponent<Text>();
         textHitPoints.text = hitPoints + "/" + hitPointsMax;
     }

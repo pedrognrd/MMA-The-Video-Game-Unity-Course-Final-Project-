@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PanelHeroManager : MonoBehaviour
 {
+    private GameObject panelCombatSkillsInfo;
     // HUD Hero data
     [Header("PANEL OBJECTS")]
     private Text textName;
@@ -24,6 +25,35 @@ public class PanelHeroManager : MonoBehaviour
     public Button attackRange1;
     public Button attackRange2;
     public GameObject button1;
+
+    //HUD Weapon Panel
+    private Text weaponName;
+    private Text weaponKind;
+    private Text weaponImpact;
+    private Text weaponDamage;
+    private Text weaponDamageBonus;
+    private Text weaponEffect; 
+
+    private void Awake()
+    {
+        panelCombatSkillsInfo = GameObject.Find("PanelCombatSkillsInfo");
+    }
+
+    public void WeaponInfo1() 
+    {
+        weaponName = GameObject.Find("BlueGhostWeaponName").GetComponent<Text>();
+        weaponName.text = "Indigo Fist";
+        weaponKind = GameObject.Find("BlueGhostWeaponKind").GetComponent<Text>();
+        weaponKind.text = "Kind: Melee";
+        weaponImpact = GameObject.Find("BlueGhostWeaponImpact").GetComponent<Text>();
+        weaponImpact.text = "Impact: " + GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().fist.ToString();
+        weaponDamage = GameObject.Find("BlueGhostWeaponDamage").GetComponent<Text>();
+        weaponDamage.text = "Damage:  1-4";
+        weaponDamageBonus = GameObject.Find("BlueGhostWeaponDamageBonus").GetComponent<Text>();
+        weaponDamageBonus.text = "Damage Bonus: " + GameObject.Find("BlueGhost").GetComponent<StatisticsBlueGhost>().damageBonus.ToString();
+        weaponEffect = GameObject.Find("BlueGhostWeaponEffect").GetComponent<Text>();
+        weaponEffect.text = "Effect: " + "Stun";
+    }
 
     private void Start()
     {

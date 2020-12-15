@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySelectedManager : MonoBehaviour
 {
@@ -118,6 +119,7 @@ public class EnemySelectedManager : MonoBehaviour
     public void EnemySelected(GameObject enemySend)
     {
         enemySelected = enemySend;
+        print("enemySelected.name " + enemySelected.name);
         // Sending enemySelected data to BlueGhost
         blueGhost = GameObject.Find("BlueGhost");
         blueGhost.GetComponent<BlueGhostAttackMelee1>().UpdatingEnemySelected(enemySelected);
@@ -126,6 +128,7 @@ public class EnemySelectedManager : MonoBehaviour
         blueGhost.GetComponent<BlueGhostWeaponRange2>().UpdatingEnemySelected(enemySelected);
         // Sending enemySelected data to PanelEnemy
         panelEnemyManager = GameObject.Find("PanelEnemy");
+        panelEnemyManager.GetComponent<PanelEnemyManager>().DisplayAvatar(enemySelected);
         panelEnemyManager.GetComponent<PanelEnemyManager>().UpdateEnemyPanel(enemySelected);
     }
 }
