@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public abstract class StatisticsCharacter : MonoBehaviour
 {
+    public CharacterSoundManager characterSM;
+
     [Header("PROFILE")]
     public string characterName;
     public string characterConcept;
@@ -109,6 +111,8 @@ public abstract class StatisticsCharacter : MonoBehaviour
     }
     public void DamageReceived(int damage)
     {
+        // play damage sound
+        //characterSM.PlayAudioDamage();
         hitPoints -= damage;
         // Instantiate flying points
         GetComponentInChildren<FlyingPointsManager>().InstantiateFlyingPoints(damage);
@@ -131,7 +135,7 @@ public abstract class StatisticsCharacter : MonoBehaviour
             {
                 // Decrease number of enemies in game and its counter
                 GetComponent<CharacterAnimations>().Died();
-                StartCoroutine(DestroyEnemyGameObject(2));
+                StartCoroutine(DestroyEnemyGameObject(1));
             }
         }
         else

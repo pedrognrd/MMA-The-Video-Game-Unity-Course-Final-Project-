@@ -5,6 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class TurnSequenceManager : MonoBehaviour
 {
+    public bool dagonIsInGame;
     // THIS CLASS CONTROLS THE TURN SEQUENCE AS FOLLOWS
     [SerializeField]
     public GameObject panelCombatManager;
@@ -30,6 +31,8 @@ public class TurnSequenceManager : MonoBehaviour
 
     private void Awake()
     {
+
+        dagonIsInGame = false;
         // Capturing text fields and panels of the Canvas
         textEvent1 = GameObject.Find("TextEvent1");
         textEvent2 = GameObject.Find("TextEvent2");
@@ -124,7 +127,18 @@ public class TurnSequenceManager : MonoBehaviour
     public void WhoIsFirst()
     {
         // Selecting Hero or Enemy to play first in Turn Sequence
-        whoPlaysFirst = players[Random.Range(0, players.Length)];
+        print("dagonIsInGame " + dagonIsInGame);
+        if (dagonIsInGame)
+        {
+            whoPlaysFirst = "Enemy";
+        }
+        else 
+        {
+            whoPlaysFirst = players[Random.Range(0, players.Length)];
+        }
+
+        print("whoPlaysFirst " + whoPlaysFirst);
+        
         // Display Emerging texts
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Turn " + GetComponent<CombatManager>().turnCounter);
         textEvent2.GetComponent<PanelTextEventManager>().UpdateText("It is " + whoPlaysFirst + " turn"); 

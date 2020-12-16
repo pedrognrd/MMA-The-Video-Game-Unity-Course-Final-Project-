@@ -23,6 +23,10 @@ public class SpawnerEnemies : MonoBehaviour
     private void Spawning() 
     {
         prefabEnemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
+        if (prefabEnemy.name == "Dagon" || prefabEnemy.name == "Dagon(Clone)")
+        {
+            GameObject.Find("GameManager").GetComponent<TurnSequenceManager>().dagonIsInGame = true;
+        }
         enemiesCreated++;
         if (enemiesCreated >= spawning)
         {

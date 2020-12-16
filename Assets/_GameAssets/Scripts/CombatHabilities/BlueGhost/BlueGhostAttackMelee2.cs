@@ -48,6 +48,8 @@ public class BlueGhostAttackMelee2 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioKick();
         // Play Melee2 animation
         //GetComponent<CharacterAnimations>().Melee2();
         // Apply a delay for the enemy damage animation

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class CombatSkills : MonoBehaviour
 {
+    public CharacterSoundManager characterSM;
     protected int ammo; // -1 = infinite
     protected int ammoMax; // -1 = infinite
     protected int attackRoll;
@@ -42,6 +43,8 @@ public abstract class CombatSkills : MonoBehaviour
 
         canThrow = true;
         canShoot = true;
+
+        characterSM = GetComponent<CharacterSoundManager>();
     }
     public abstract void Attack();
 }

@@ -44,10 +44,13 @@ public class DagonAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioFist();
         // Play Melee1 animation
         GetComponent<CharacterAnimations>().Melee1();
         // Using weapon, a message is shown in screen
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Claw of Dagon!");
+        textEvent1.GetComponent<PanelTextEventManager>().UpdateText("");
         // A percentual roll is made
         attackRoll = Random.Range(1, 100);
         // If the percentual roll is lower than impact value, the attack is a success
@@ -61,7 +64,7 @@ public class DagonAttackMelee1 : CombatSkills
         else
         {
             // The attack is a failed, a message is shown in screen
-            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
+            textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Attack Failed");
             // Enemy will play its defense animation
             enemyCharacter.GetComponent<CharacterAnimations>().DefenseChoosing();
         }

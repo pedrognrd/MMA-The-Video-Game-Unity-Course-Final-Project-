@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwoPointsMove : MonoBehaviour
+public class TwoPointsMoveDeepOne : MonoBehaviour
 {
     public Transform initPos;
     public Transform endPos;

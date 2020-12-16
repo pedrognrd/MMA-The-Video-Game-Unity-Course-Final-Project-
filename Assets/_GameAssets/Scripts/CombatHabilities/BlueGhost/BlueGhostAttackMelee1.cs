@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class BlueGhostAttackMelee1 : CombatSkills
 {
-
-    // TODO: Attack Animation
-    // TODO: If enemy dies, make animation
-    // TODO: Update HUD
-    // TODO: Update threat level
-    // TDOO: Update Arkham threat level
-
     public int damageBonus;
 
     protected override void Awake()
@@ -46,6 +39,8 @@ public class BlueGhostAttackMelee1 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioFist();
         //InvokeMelee1();
         // Apply a delay for the enemy damage animation
         Invoke("InvokeMelee1", 0.5f);

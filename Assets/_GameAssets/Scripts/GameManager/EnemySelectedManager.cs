@@ -108,6 +108,7 @@ public class EnemySelectedManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         // Code to execute after the delay
         textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Blue Ghost, is your turn!");
+        textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Select an enemy");
     }
 
     public void Enemydied()

@@ -42,6 +42,10 @@ public class BlueGhostWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioThrow();
+        // Instantiate hat prefab
+        GetComponent<ThrowingAndShooting>().ThrowHat();
         // Play Range1 animation
         GetComponent<CharacterAnimations>().Range1();
         // Using weapon, a message is shown in screen

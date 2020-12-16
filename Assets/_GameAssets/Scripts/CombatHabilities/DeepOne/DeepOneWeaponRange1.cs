@@ -50,12 +50,15 @@ public class DeepOneWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioThrow();
         // Play Range1 animation
         GetComponent<CharacterAnimations>().Range1();
         if (canThrow)
         {
             // Using weapon, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Throwing Sleeping Star");
+            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("");
             // A percentual roll is made
             attackRoll = Random.Range(1, 100);
             // If the percentual roll is lower than impact value, the attack is a success

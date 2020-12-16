@@ -44,6 +44,10 @@ public class BlueGhostWeaponRange2 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioShoot();
+        // Instantiate shot effect prefab
+        GetComponent<ThrowingAndShooting>().ShootGun();
         // Play Range2 animation
         GetComponent<CharacterAnimations>().Range2();
         // A percentual roll is made

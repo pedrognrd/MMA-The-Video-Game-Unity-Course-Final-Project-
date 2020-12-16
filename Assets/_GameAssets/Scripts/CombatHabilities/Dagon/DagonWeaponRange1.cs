@@ -54,12 +54,15 @@ public class DagonWeaponRange1 : CombatSkills
 
     public override void Attack()
     {
+        // play attack sound
+        characterSM.PlayAudioThrow();
         // Play Range1 animation
         GetComponent<CharacterAnimations>().Range1();
         if (canShoot)
         {
             // Using weapon, a message is shown in screen
             textEvent1.GetComponent<PanelTextEventManager>().UpdateText("Children, come to me!");
+            textEvent1.GetComponent<PanelTextEventManager>().UpdateText("");
             // A percentual roll is made
             attackRoll = Random.Range(1, 100);
             attackRoll = 1;

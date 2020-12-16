@@ -101,8 +101,8 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 20
-  m_PointLightOuterAngle: 30
+  m_PointLightInnerAngle: 41.58
+  m_PointLightOuterAngle: 79.03
   m_PointLightInnerRadius: 18
   m_PointLightOuterRadius: 22
   m_PointLightDistance: 3
@@ -172,6 +172,8 @@ GameObject:
   - component: {fileID: 7151628774184771714}
   - component: {fileID: 5187556924661330132}
   - component: {fileID: 7893233246284751169}
+  - component: {fileID: 1505122473702603965}
+  - component: {fileID: 1676844661078475097}
   m_Layer: 8
   m_Name: DeepOne
   m_TagString: Enemy
@@ -230,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94573cd70e430ea4bba08fa897aeaf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSM: {fileID: 0}
   characterName: 
   characterConcept: 
   characterDescription: 
@@ -291,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3d52ff86ca8384e8ce49c15cdec3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSM: {fileID: 0}
   impact: 0
   character: {fileID: 6503926112634852538}
   textEvent1: {fileID: 0}
@@ -313,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc51c3201431b741bf7aef59cdbd410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSM: {fileID: 0}
   impact: 0
   character: {fileID: 6503926112634852538}
   textEvent1: {fileID: 0}
@@ -410,6 +415,119 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.31393695}
   serializedVersion: 2
   m_Radius: 3.3127735
+--- !u!82 &1505122473702603965
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503926112634852538}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1676844661078475097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503926112634852538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5d194e085a041459fa16e128f20d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioDamage: {fileID: 8300000, guid: 8f3e3ba2569ba3e4dac9bf81c51f7a62, type: 3}
+  audioFist: {fileID: 8300000, guid: 0a54523149eb31040a2f9416103f5033, type: 3}
+  audioKick: {fileID: 8300000, guid: ba327b58e6c099145995c844fd39346a, type: 3}
+  audioShoot: {fileID: 8300000, guid: 4fbcd1efc1e4a6d4488c2c9de6a3d99b, type: 3}
+  audioThrow: {fileID: 8300000, guid: 4fbcd1efc1e4a6d4488c2c9de6a3d99b, type: 3}
 --- !u!1 &6503926113069885037
 GameObject:
   m_ObjectHideFlags: 0

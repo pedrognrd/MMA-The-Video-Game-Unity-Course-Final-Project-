@@ -26,6 +26,9 @@ public class StatisticsDagon : StatisticsCharacter
         dodge = dexterity * 2;
         hitPointsMax = constitution + size;
         hitPoints = hitPointsMax;
-        hitPoints = 10;
+        // FOR TESTING PURPOSES
+        hitPoints = 40;
+        hitPointsMax = 40;
+        // FOR TESTING PURPOSES
     }
 }
