@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-        ClearLog();
+        //ClearLog();
         // Capturing text fields and panels of the Canvas
         textEvent1 = GameObject.Find("TextEvent1");
         textEvent2 = GameObject.Find("TextEvent2");
@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
         textEvent2.GetComponent<PanelTextEventManager>().UpdateText("Dagon is at the end of the street!");
     }
 
-    public void ClearLog()
+    /*public void ClearLog()
     {
         var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
         var type = assembly.GetType("UnityEditor.LogEntries");
         var method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
-    }
+    }*/
 }

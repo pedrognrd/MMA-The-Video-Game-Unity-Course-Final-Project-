@@ -1256,7 +1256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: Miskatonic Mistery Adventures
+  m_Text: Miskatonic Mystery Adventures
 --- !u!222 &7240532761082239233
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -339,6 +339,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7240532761169851851, guid: 79248955234d2a042bbb5f8f14533ee2,
+        type: 3}
+      propertyPath: m_Text
+      value: Miskatonic Mystery Adventures
+      objectReference: {fileID: 0}
     - target: {fileID: 7240532761533599282, guid: 79248955234d2a042bbb5f8f14533ee2,
         type: 3}
       propertyPath: m_Volume
